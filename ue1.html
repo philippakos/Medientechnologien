@@ -1,0 +1,1139 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/format.css">
+    <link rel="stylesheet" type="text/css" href="styles/flex-utils.css">
+</head>
+
+<body style="padding: 30px;">
+
+<h2 class="mb-2">Übung 1 – Audiodateien erzeugen und einlesen</h2>
+
+<!-- ################################################ AUFGABE 1 ################################################-->
+<section class="group">
+    <h3 class="mb-2">Aufgabe 1</h3>
+    <!-- ############### 1.a ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.a</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Schneide aus den dir zugeschickten Audio-Files ab dem Zeitpunkt jeweils ein Stück mit der Länge 5
+                Sekunden und speichere dieses als WAV-Datei ab. Parameter für Musik: fa=44,1 kHz, stereo, für
+                Sprache: fa=8 kHz mono, beide 16 bit Auflösung. Beim Schneiden achtest du darauf, dass der
+                Schnitt am Beginn einer musikalischen Figur bzw. eines Satzes liegt.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <audio controls>
+                    <source src="./audio/musik_stereo.wav" type="audio/wav">
+                </audio>
+            </div>
+            <div>
+                <audio controls>
+                    <source src="./audio/sprache_mono.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 1.b ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.b</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Erkläre, warum die Audio-Files unterschiedliche Abtastfrequenzen haben.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <p>Die Abtastfrequenzen der beiden Audio-Dateien variieren, da Musik in der Regel
+                    das gesamte hörbare Frequenzspektrum übertragen muss, während bei Sprache die
+                    Verständlichkeit im Vordergrund steht, weshalb ein begrenztes Frequenzspektrum
+                    ausreicht, das die menschliche Stimme abdeckt. Der hörbare Bereich für Menschen
+                    erstreckt sich von 20Hz bis 20.000Hz. Gemäß dem Abtasttheorem sollte die Abtastrate
+                    mindestens das Doppelte betragen, was in der Musik auf 44.100Hz hinausläuft.
+                    Im Gegensatz dazu bewegt sich die menschliche Stimme in einem Bereich von
+                    ungefähr 4.000Hz, was bedeutet, dass eine Abtastrate von 8.000Hz für Sprachaufnahmen
+                    ausreichend ist.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 1.c ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.c</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Lies die Musik- und die Sprachdatei mit wave_io ein und erkläre die Angaben im Header!
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <p>Headerausgaben Sprachdatei</p>
+                <div class="row">
+                    <img src="pics/u1/1c_sprache_header.png" alt=" " height="120">
+                    <div class="pl-2">
+                        <p>
+                            <b>Channels:</b> Beschreibt ob es sich bei der Datei um Mono (1 Channel) oder stereo (2
+                            Channel) handelt
+                        </p>
+                        <p>
+                            <b>Frames:</b> Gibt die Gesamtanzahl der Abtastpunkte für die Audiodatei an.
+                            Die Zahl ergibt sich aus: SampleRate * AudioDuration.
+                        </p>
+                        <p>
+                            <b>Sample Rate:</b> Die Sample Rate ist die Abtastfrequenz, also wie häufig
+                            in der Sekunde der Audio-Pegel erfasst und gespeichert wird. (In diesem Fall 8000x pro
+                            Sekunde)
+                        </p>
+                        <p>
+                            <b>Valid Bits:</b> Die Bitanzahl bestimmt, wie präzise ein Samplewert gespeichert wird
+                            und beeinflusst die Qualität der Audiowiedergabe. Mit mehr Speicher für jedes Sample
+                            erreicht man eine feinere und natürlichere Klangwiedergabe. Bei einer 16-Bit-Auflösung
+                            entsprechen beispielsweise 65.536 Werte einem einzelnen Sample, während bei 24 Bit bereits
+                            16.777.216 Werte pro Sample verarbeitet werden können.
+                        </p>
+                        <p>
+                            <b>Bytes per sample:</b> Wie viele Bytes zur Speicherung eines einzelnen Audiowerts
+                            (Samples)
+                            verwendet werden. In diesem Fall sind es 2 Bytes, was der Größe entspricht,
+                            die für ein 16-Bit-Audiosample benötigt wird (16 Bit = 2 Bytes).
+                        </p>
+                    </div>
+                </div>
+                <p>Headerausgaben Musikdatei</p>
+                <div class="row">
+                    <img src="pics/u1/1c_musik_header.png" alt=" " height="120">
+                    <div class="pl-2">
+                        <p>
+                            <b>Channels:</b> 2 Channel, da Stereo
+                        </p>
+                        <p>
+                            <b>Frames:</b> Sehr viel mehr Abtastpunkte durch höhere Sample Rate.
+                        </p>
+                        <p>
+                            <b>Sample Rate:</b> 44100 Hz ist für Musik eine typische Sample Rate.
+                        </p>
+                        <p>
+                            <b>Valid Bits:</b> Ändert sich nicht.
+                        </p>
+                        <p>
+                            <b>Bytes per sample:</b> Ändert sich nicht.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 1.d ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.d</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Berechne die Bitrate für die beiden Dateien!
+                <br>
+                Benenne die Dateien „Musik_NameArbeitsgruppe.wav" und „Sprache_NameArbeitsgruppe.wav" und
+                <br>
+                schicke mir die beiden WAV-Dateien unter Nennung deiner Arbeitsgruppe im Betreff per Mail zu
+                <br>
+                (In den folgenden Übungen wirst du diese Dateien oft als Ursprungssignale verwenden. Sollten sie
+                verloren gehen, kannst du sie notfalls wieder von mir erhalten.).
+                <br>
+                Du bekommst daraufhin zwei WAVDateien mit Testsignalen zugesendet,
+                <br>
+                die du bei den folgenden Aufgabenpunkten benötigst, sine_hiXX.wav und sine_loXX.wav.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                Bitrate = Anzahl der Channels * Sample Rate * Anzahl der Bits<br>
+                Bitrate für die Sprachdatei: 1 * 16 * 8000 = 128 kBit/s<br>
+                Bitrate für die Musikdatei: 2 * 16 * 44100 = 1411,2 kBit/s = ca. 1,4 Mbit/s
+            </div>
+        </div>
+    </article>
+</section>
+
+<!-- ################################################ AUFGABE 2 ################################################-->
+<section class="group">
+    <h3 class="mb-2">Aufgabe 2</h3>
+
+    <!-- ############### 2.a ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.a</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei
+                geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz)
+                ein und bestimme aus den resultierenden Zahlenfolgen in der ASCII-Datei die Frequenz der
+                SinusSchwingungen. Begründe!
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="row">
+                <!-- TODO -->
+                <div class="col-6">
+                    <img src="pics/u1/2a_1.png" alt="" class="mb-2" style="width: 100%">
+                    <img src="pics/u1/2a_2.png" alt="" style="width: 100%">
+                </div>
+                <div class="col-6 pl-2">
+                    <div class="mb-2">
+                        <h3>Lösungsidee:</h3>
+                        <p>
+                            Wir wissen, dass die Abtastfrequenz vorgibt, wie viele Abtastpunkte pro Sekunde generiert
+                            werden
+                            und in <b>sound[]</b> gespeichert werden.
+                            <br>
+                            (In unserem Fall 16kHz -> 16.000 Werte im Array wurden in 1 Sekunde gespeichert)
+                        </p>
+                        <p>
+                            Die Frequenz wird als 1/T definiert. Also wie viele Perioden pro Sekunde.
+                        </p>
+                        <p>
+                            Zudem wissen wir das eine Sinuskurve 2 Richtungswechsel hat, der <b>T (Periode)</b>
+                            beschreibt.
+                        </p>
+                    </div>
+                    <div class="mb-2">
+                        <h3>Lösung</h3>
+                        <p>
+                            Wenn man nun durch <b>sound[]</b> iteriert, muss man sich Schritt für Schritt die Werte
+                            anschauen und miteinander vergleichen, um festzustellen,
+                            wann so ein Richtungswechsel stattfindet.
+                            <br>
+                            Diesen speichern wir in der Variable <b>directionChangeCount</b>.
+                        </p>
+                        <p>
+                            Anschließen muss man den Wert durch 2 teilen (da 2 Richtungswechsel eine Periode
+                            kennzeichnen)
+                            und schon hat man die Frequenz.
+                        </p>
+                    </div>
+                    <div>
+                        <h3>Ergebnis</h3>
+                        <img src="pics/u1/2a_3.png" alt="" class="mb-2" style="width: 100%">
+                        <img src="pics/u1/2a_4.png" alt="" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 2.b ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.b</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Überprüfe deine Schätzung mit dem Programm PRAAT. (Vorgehensweise: Read file..., To Spectrum..., Edit)
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <p class="mb-2">Die Werte der Schätzung stimmen überein (bei sine_hi ist ein minimaler Unterschied von 1
+                Hz</p>
+            <div class="mb-2">
+                <img src="pics/u1/2b_1.png" alt="" style="width: 70%">
+                <p>sine_hi06.wav</p>
+            </div>
+            <div class="mb-2">
+                <img src="pics/u1/2b_2.png" alt="" style="width: 70%">
+                <p>sine_lo06.wav</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 2.c ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.c</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Bei der zeitlichen Diskretisierung eines Analogsignals muss das sogenannte Abtasttheorem
+                eingehalten werden. Wie lautet es und wie lässt sich der Grenzfall, für den es gerade noch gilt,
+                illustrieren? Erstelle hierzu eine Zeichnung und erläutere.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <div class="mb-2">
+                    <p>
+                        Das Abtasttheorem besagt, dass die Abtastfrequenz größer als das doppelte der Signal-Frequenz
+                        sein muss.
+                    </p>
+                    <p>
+                        <b>fa < 2 * f</b>
+                    </p>
+                    <p>
+                        Angenommen wir haben eine Schwingung mit <b>4Hz</b>.
+                    </p>
+                    <p>
+                        Laut Abtasttheorem müsste die Abtastfrequenz (fa) größer als das Doppelte sein:
+                        <br>
+                        <b>fa > 2 * 4Hz</b>
+                        <br>
+                        Wir wählen hierfür <b>fa = 16 Hz</b>.
+                    </p>
+                </div>
+
+                <div class="mb-2">
+                    <p> Wenn man nun Abtastet sieht man folgendes:</p>
+                    <img src="pics/u1/2c_1.png" alt="" style="width: 60%">
+                </div>
+
+                <hr>
+
+                <div class="mb-2">
+                    <p>
+                        Würden für <b>fa = 8 Hz</b>, also exakt das doppelte wählen, dann hätten wir folgendes Problem
+                        und zwar das alle unsere Abtastpunkte einen Nullpunkt abtasten!
+                    </p>
+                </div>
+                <div class="mb-2">
+                    <img src="pics/u1/2c_2.png" alt="" style="width: 60%">
+                </div>
+
+                <hr>
+
+                <div class="mb-2">
+                    <p>
+                        Würden für <b>fa = 8.1 Hz</b>, also nur ein bisschen mehr als doppelte, sieht man,
+                        dass es sich wieder "einpendelt" und man das Signal wieder (einigermaßen) repräsentieren kann!
+                    </p>
+                </div>
+                <div class="mb-2">
+                    <img src="pics/u1/2c_3.png" alt="" style="width: 60%">
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 2.d ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.d</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Bei herkömmlichen Soundkarten tritt systembedingt kein Aliasing auf, weil das Audiosignal stets
+                geeignet vorbehandelt wird. Wie sieht diese Vorbehandlung aus?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                Das Signal wird mithilfe eines Tiefpassfilters verarbeitet, wodurch alle Frequenzen,
+                die über f0max/2 liegen, auf dieses Limit begrenzt werden, indem sie unterdrückt werden.
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 2.e ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.e</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Mit einem kleinen Trick lässt sich Aliasing jedoch nachweisen. Diese auch als Down-Sampling
+                bekannte Methode besteht darin, dass man bei einer WAV-Datei z.B. jeden zweiten Abtastwert
+                wegwirft. Man erhält so eine Wellenform, die genau die Hälfte der ursprünglichen Abtastfrequenz
+                aufweist. Wenn man das Signal nicht vorher bandbegrenzt hat, können Aliasing-Verzerrungen
+                hörbar werden.
+                Modifiziere wave_io dahingehend, dass vom eingelesenen Audiosignal jeder zweite Abtastwert
+                verworfen wird und das resultierende Signal abgespeichert wird. Der Header muss natürlich
+                entsprechend verändert werden!
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <img src="pics/u1/2e_downsampling.PNG" alt="" style="width: 60%">
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 2.f ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.f</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Wende das erstellte Programm auf die von mir geschickten Sinusdateien an (sine_hiXX.wav und
+                sine_loXX.wav) an. Welche Frequenzen erscheinen nach dem Down-Sampling? Was würde
+                passieren, wenn man geeignet bandbegrenzen würde?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <p>sine_lo06 downsampled</p>
+                <audio controls>
+                    <source src="./audio/sine_lo06_downsampling.wav" type="audio/wav">
+                </audio>
+                <p>Frequenz nach Down-Sampling: 500 Hz</p>
+            </div>
+            <div>
+                <p>sine_hi06 downsampled</p>
+                <audio controls>
+                    <source src="./audio/sine_hi06_downsampling.wav" type="audio/wav">
+                </audio>
+                <p>Frequenz nach Down-Sampling: 500 Hz</p>
+            </div>
+            <br>
+            <p>Beim Down-Sampling treten Aliasing-Effekte auf,
+                wenn das Signal nicht ausreichend bandbegrenzt wird.
+                Geeignetes Bandbegrenzen vor dem Down-Sampling sorgt
+                dafür, dass nur Frequenzen innerhalb des Abtasttheorem
+                erhalten bleiben und Aliasing vermieden wird.</p>
+        </div>
+    </article>
+
+    <!-- ############### 2.g ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.g</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Nun wende das Downsampling auf deine Sprachdatei an und beschreibe,
+                wie sich der Klang verändert. Erkläre, warum das passiert!
+            </p>
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <p>Die Audioqualität verschlechtert sich erheblich, wodurch der
+                    Klang dumpfer wird und die Sprachverständlichkeit stark abnimmt.</p>
+                <audio controls>
+                    <source src="./audio/sprache_mono_downsampled.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </article>
+</section>
+
+<!-- ################################################ AUFGABE 3 ################################################-->
+<section class="group">
+    <h3 class="mb-2">Aufgabe 3</h3>
+
+    <!-- ############### 3.a ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.a</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Die herkömmlichen PC-Soundkarten arbeiten meist entweder mit 16 oder 8 bit-Auflösung. Wie
+                groß ist die Anzahl bei diesen beiden Werten darstellbaren Amplitudenwerten?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                Amplitudenwert für 16 bit-Auflösung: 2^16 = 65.536
+                <br>
+                Amplitudenwert für 16 bit-Auflösung 2^8 = 256
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 3.b ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.b</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Modifiziere wave_io dahingehend, dass die Bitanzahl reduziert wird. Dazu werden alle Samples
+                durch eine Potenz von 2 geteilt (Integer-Division ohne Rest). Damit das resultierende Signal nicht
+                leiser wird als das Original, wird die Operation durch Multiplikation mit derselben 2er Potenz
+                kompensiert. Zu beachten: Der Datentyp hat nach wie vor 16 bit!
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <img src="pics/u1/3b_Bitreduzierung.PNG" alt="" style="width: 60%">
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 3.c ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.c</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Mit dem entstandenen Programm sollen nun die in Aufgabe 1 erzeugten Wave-Dateien (Sprache
+                und Musik) bitreduziert werden. Ab welcher Bitanzahl tritt eine hörbare, also deutliche
+                Verschlechterung der Qualität ein? Bei wie viel Bit ist das Sprachsignal noch verständlich?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <h2 class="mb-2" style="background-color: #888888; color: white; padding: 12px">Sprache</h2>
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>1 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_1.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_1.wav hat nur noch 1 Bit (also um 15 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>Man hört nichts!</b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>2 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_2.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_2.wav hat nur noch 2 Bits (also um 14 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Man hört zumindest etwas.
+                                <br>
+                                Zudem kann man schon mal einen Rhythmus raushören.
+                                <br>
+                                Aber verstehen tut man noch nichts!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>3 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_3.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_3.wav hat 3 Bits (also um 13 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Langsam erkennt man, dass es sich immerhin um Sprache handelt!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>4 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_4.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_4.wav hat 4 Bits (also um 12 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Man kann schon einzelne Worte verstehen!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>5 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_5.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_5.wav hat 5 Bits (also um 11 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Sehr abgehackt, aber mit etwas Raten, kann man den Satz verstehen!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>6 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_6.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_6.wav hat 6 Bits (also um 10 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Man versteht schon den Satz! Aber das Rauschen ist noch zu penetrant.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>7 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_7.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_7.wav hat 7 Bits (also um 9 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Rauschen ist deutlich weniger als bei 6 Bits. Könnte besser sein...
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>8 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_8.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_8.wav hat 8 Bits (also um 8 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Rauschen rückt deutlich in den Hintergrund!
+                                <br>
+                                Ab hier könnte man schon gut zuhören!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>9 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_sprache_mono_9.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_sprache_mono_9.wav hat 9 Bits (also um 7 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Der Unterschied zu 8 Bit ist kaum da.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="row">
+                    <div style="background-color: #3BF3497C; padding: 12px">
+                        <h3>Fazit:</h3>
+                        <p>Eine Reduzierung von 8 Bit bei Sprache reicht vollkommen aus!</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="mb-2">
+                <h2 class="mb-2" style="background-color: #888888; color: white; padding: 12px">Musik</h2>
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>1 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_1.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_1.wav hat nur noch 1 Bit (also um 15 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>Man hört nichts!</b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>2 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_2.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_2.wav hat nur noch 2 Bits (also um 14 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Man hört immer noch nichts.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>3 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_3.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_3.wav hat nur noch 3 Bits (also um 13 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Man hört abgehackte Geräusche.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>4 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_4.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_4.wav hat 4 Bits (also um 12 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Überwiegend abgehackte Geräusche,
+                                <br>
+                                aber Instrumente (Klavier) sind schon zu hören.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>5 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_5.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_5.wav hat 5 Bits (also um 11 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Man hört schon die Musik, aber das Rauschen ist sehr unangenehm!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>6 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_6.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_6.wav hat 6 Bits (also um 10 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Besser als davor, aber immer noch zu starkes Rauschen.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>7 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_7.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_7.wav hat 7 Bits (also um 9 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Rauschen ist deutlich weniger als bei 6 Bits. Aber für Musik immer noch zu viel!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>8 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_8.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_8.wav hat 8 Bits (also um 8 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Rauschen rückt hier auch mehr in den Hintergrund!
+                                Aber auch hier für Musik immer noch zu viel!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>9 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_9.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_9.wav hat 9 Bits (also um 7 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Rauschen rückt hier viel mehr in den Hintergrund als bei 8 Bits!
+                                Aber auch hier für Musik immer noch zu viel!
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>10 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_10.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_10.wav hat 10 Bits (also um 6 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Rauschen rückt hier noch mehr in den Hintergrund als bei 9 Bits!
+                                Langsam kann man schon angenehm zuhören!
+                                (Aber das Rauschen ist für Musikfanatiker noch zu viel)
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>11 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_11.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_11.wav hat 11 Bits (also um 5 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Das Rauschen ist noch da, aber auch deutlich besser als davor.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>12 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_12.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_12.wav hat 12 Bits (also um 4 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Das Rauschen ist nun noch weniger als bei 11 Bits.
+                                <br>
+                                Man muss schon darauf achten.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>13 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_13.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_13.wav hat 13 Bits (also um 3 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Das Rauschen ist nun kaum zu hören! Man muss sich schon langsam anstrengen
+                                <br>
+                                (je nach Ohr mehr oder weniger). revanchiere
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+                <div class="mb-2 row align-items-center">
+                    <div style="white-space: nowrap;">
+                        <h3>14 Bit</h3>
+                    </div>
+                    <div class="pl-2">
+                        <audio controls>
+                            <source src="./audio/u1/3c_musik_stereo_14.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="pl-2">
+                        <p>
+                            Die Datei 3c_musik_stereo_14.wav hat 14 Bits (also um 2 Bits reduziert!)
+                        </p>
+                        <p>
+                            <b>
+                                Das Rauschen ist nun noch weniger zu hören als eh schon bei 13 Bit war!
+                                <br>
+                                Man muss sich nun richtig anstrengen, um es rauszuhören.
+                            </b>
+                        </p>
+                    </div>
+                </div>
+                <hr class="mb-2">
+
+                <div class="row">
+                    <div style="background-color: #3BF3497C; padding: 12px">
+                        <h3>Fazit:</h3>
+                        <p>Eine Reduzierung von 2 Bit bei Musik führt zu einem relativ angenehmen Hörerlebnis!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 3.d ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.d</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Was charakterisiert das entstehende Quantisierungsgeräusch bei der Bitreduzierung und macht es
+                besonders störend?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                Das entstehende Quantisierungsgeräusch wird durch ein Rauschen charakterisiert, was bei der
+                Bitreduzierung immer weiter zunimmt. Zusätzlich verschlechtert sich der Sound und fängt an
+                zu stocken. Am Ende kann nichts mehr außer Rauschen vom originalen Ton vernommen werden.
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 3.e ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.e</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Modifiziere dein Programm noch einmal so, dass auch das Differenzsignal zwischen Original und
+                bitreduziertem Signal, d.h. der Quantisierungsfehler ausgegeben werden kann. Dabei musst du
+                bedenken, dass z.B. bei der 1 Bit Reduzierung das Quantisierungsrauschen nur von -1 bis +1
+                verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim
+                Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit
+                einer 2er Potenz verstärkt werden. In anderen Worten: Hat man vorher durch 2^n geteilt, sollte
+                man das Differenzsignal vor dem Abspeichern mit 2^(16-n-1) multiplizieren. So ist sichergestellt,
+                dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <!-- TODO -->
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 3.f ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.f</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Welchen Charakter hat das Rauschen bei einer Reduktion um 1bit und wie verändert es sich bei
+                zunehmender Bit-Reduktion?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <!-- TODO -->
+            </div>
+        </div>
+    </article>
+
+    <!-- ############### 3.g ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.g</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Wende das erstellte Programm auf die von mir geschickten Sinusdateien an (sine_hiXX.wav und
+                sine_loXX.wav) an. Welche Frequenzen erscheinen nach dem Down-Sampling? Was würde
+                passieren, wenn man geeignet bandbegrenzen würde?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div class="mb-2">
+                <!-- TODO -->
+            </div>
+        </div>
+    </article>
+</section>
+</body>
+</html>

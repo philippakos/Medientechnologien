@@ -1,0 +1,28 @@
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 8px 0;
+}
+
+a:link {
+    color: #ffffff;
+}
+
+a:visited {
+    color: #F5F6CE;
+}
+
+a:hover {
+    color: #888888;
+}
+
+a:active {
+    color: #ffffff;
+}

@@ -1,0 +1,42 @@
+.group {
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: cadetblue;
+    box-shadow: 0px 3px 15px -3px rgba(0, 0, 0, 0.6);
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: white;
+    color: #222;
+    border-radius: 8px;
+    box-shadow: 0px 3px 15px -3px rgba(0, 0, 0, 0.6);
+}
+
+.card .card-header {
+    background-color: #222222;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    padding: 14px;
+    border-bottom: 1px solid lightgray;
+}
+
+.card .card-body {
+    padding: 14px;
+}
+
+.mb-1 {
+    margin-bottom: 12px;
+}
+
+.mb-2 {
+    margin-bottom: 22px;
+}
+
+.pl-2 {
+    padding-left: 22px;;
+}
+.pr-2 {
+    padding-right: 22px;;
+}
