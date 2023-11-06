@@ -123,8 +123,12 @@
             <h4 class="mb-2">Lösung:</h4>
             <div>
                 <p>Unser Ergebnis:</p>
-                <img src="pics/u2/2_1_3.png" alt="" class="mb-2" style="height: 50px">
-                <img src="pics/u2/2_1_4.png" alt="" class="mb-2" style="height: 50px">
+                <div>
+                    <img src="pics/u2/2_1_3.png" alt="" class="mb-2" style="height: 50px">
+                </div>
+                <div>
+                    <img src="pics/u2/2_1_4.png" alt="" class="mb-2" style="height: 50px">
+                </div>
 
                 <hr>
 
@@ -272,7 +276,109 @@
             <hr class="mb-2">
 
             <h4 class="mb-2">Lösung:</h4>
-            <div class="row">
+            <div class="mb-2">
+                <p>Erstmal zu der Frage aus der Aufgabestellung!</p>
+                <p>
+                    <b>Frage:</b>
+                    <i>Diese Veränderung hat natürlich nur bei einem der beiden Testbilder Sinn (warum?).</i>
+                </p>
+                <p>
+                    <b>Antwort:</b>
+                    Das horizontale Down-Sampling macht bei dem Bild mit den horizontalen Linien
+                    (grating_V12.bmp --- müsste eigentlich H12 sein)
+                    insofern keinen Sinn, weil das Bild in jeder Zeile der "Bild-Matrix" immer die gleichen Werte hat!
+                </p>
+            </div>
+            <hr>
+            <div class="mb-2">
+                <p>
+                    Unser Algorithmus:
+                </p>
+                <img src="pics/u2/2_5_code.png" alt="" style="width: 70%">
+            </div>
+            <hr>
+
+            <div class="mb-2 row align-items-center">
+                <div class="col-6">
+                    <img src="pics/u2/2_5_code_2.png" alt="" style="height: 30px" class="mb-2">
+                    <p>Bei 2 kann man auch nichts sehen</p>
+                </div>
+                <div class="col-6">
+                    <img src="pics/u2/grating_H12_vertical_downsampling_2x.bmp" alt="" style="width: 100%">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="mb-2 row align-items-center">
+                <div class="col-6">
+                    <img src="pics/u2/2_5_code_3.png" alt="" style="height: 30px" class="mb-2">
+                    <p>Bei 3 kann man schon was erkennen!</p>
+                </div>
+                <div class="col-6">
+                    <img src="pics/u2/grating_H12_vertical_downsampling_3x.bmp" alt="" style="width: 100%">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="mb-2 row align-items-center">
+                <div class="col-6">
+                    <img src="pics/u2/2_5_code_4.png" alt="" style="height: 30px" class="mb-2">
+                    <p>Jap. Bei 4 kann man ganz klar schon die Moiré-Muster erkennen!</p>
+                </div>
+                <div class="col-6">
+                    <img src="pics/u2/grating_H12_vertical_downsampling_4x.bmp" alt="" style="width: 100%">
+                </div>
+            </div>
+
+            <div>
+                <p>
+                    <b>Erklärung nach Abtasttheorem:</b>
+                </p>
+                <p>
+                    Wir hatten in Aufgabe 2.1 die Periodendauer von "grating_h12" auf ca. <b>9</b> Pixel geschätzt.
+                    (Allerdings war das eine Division ohne Rest).
+                    <br>
+                    Wenn wir ganz genau sein wollen, können wir mal den Debugger anschmeißen und schauen was
+                    die genauen Werte sind.
+                </p>
+                <div>
+                    <img src="pics/u2/2_5_debug.png" alt="" style="height: 120px">
+                </div>
+                <p>
+                    Also wenn man es ganz genau wissen will, dann ist die Periodendauer im Durchschnitt bei
+                    <b>633 / 67 = <u>9,44</u></b>
+                </p>
+                <hr>
+                <p>
+                    Wenn wir nun mit 2x Down-Sampling betreiben, verletzen wir das Abtasttheorem nicht,
+                    da wir bei 9 Pixeln jedes 2e abtasten
+                    <br>
+                    <b>9 / 2 = 4,5 ---> 9,44 > 2 * 4,5</b>
+                </p>
+                <p>
+                    Wenn wir mit 3x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem!</u>,
+                    da wir bei 9 Pixeln jedes 3e abtasten
+                    <br>
+                    <b>9 / 3 = 3 ---> 9,44 > 2 * 3</b>
+                    <br>
+                    Daher können wir schon ein leichtes Moiré-Muster erkennen!
+                </p>
+                <p>
+                    Wenn wir nun 4x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem um so mehr!</u>,
+                    da wir bei 9 Pixeln jedes 4e abtasten
+                    <br>
+                    <b>9 / 4 = 2,25 ---> 9,44 > 2 * 2,25</b>
+                    <br>
+                    Daher können wir schon sehr deutlich das Moiré-Muster erkennen!
+                </p>
+            </div>
+
+            <hr>
+
+            <div>
+                <h3>Schauen wir uns nun unsere eigenen Bilder an</h3>
                 <!-- TODO -->
             </div>
         </div>
