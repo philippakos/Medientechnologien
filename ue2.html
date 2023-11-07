@@ -332,51 +332,49 @@
                 </div>
             </div>
 
-            <div>
-                <p>
-                    <b>Erklärung nach Abtasttheorem:</b>
-                </p>
-                <p>
-                    Wir hatten in Aufgabe 2.1 die Periodendauer von "grating_h12" auf ca. <b>9</b> Pixel geschätzt.
-                    (Allerdings war das eine Division ohne Rest).
-                    <br>
-                    Wenn wir ganz genau sein wollen, können wir mal den Debugger anschmeißen und schauen was
-                    die genauen Werte sind.
-                </p>
-                <div>
-                    <img src="pics/u2/2_5_debug.png" alt="" style="height: 120px">
-                </div>
-                <p>
-                    Also wenn man es ganz genau wissen will, dann ist die Periodendauer im Durchschnitt bei
-                    <b>633 / 67 = <u>9,44</u></b>
-                </p>
-                <hr>
-                <p>
-                    Wenn wir nun mit 2x Down-Sampling betreiben, verletzen wir das Abtasttheorem nicht,
-                    da wir bei 9 Pixeln jedes 2e abtasten
-                    <br>
-                    <b>9 / 2 = 4,5 ---> 9,44 > 2 * 4,5</b>
-                </p>
-                <p>
-                    Wenn wir mit 3x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem!</u>,
-                    da wir bei 9 Pixeln jedes 3e abtasten
-                    <br>
-                    <b>9 / 3 = 3 ---> 9,44 > 2 * 3</b>
-                    <br>
-                    Daher können wir schon ein leichtes Moiré-Muster erkennen!
-                </p>
-                <p>
-                    Wenn wir nun 4x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem um so mehr!</u>,
-                    da wir bei 9 Pixeln jedes 4e abtasten
-                    <br>
-                    <b>9 / 4 = 2,25 ---> 9,44 > 2 * 2,25</b>
-                    <br>
-                    Daher können wir schon sehr deutlich das Moiré-Muster erkennen!
-                </p>
-            </div>
-
+<!--            <div>-->
+<!--                <p>-->
+<!--                    <b>Erklärung nach Abtasttheorem:</b>-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Wir hatten in Aufgabe 2.1 die Periodendauer von "grating_h12" auf ca. <b>9</b> Pixel geschätzt.-->
+<!--                    (Allerdings war das eine Division ohne Rest).-->
+<!--                    <br>-->
+<!--                    Wenn wir ganz genau sein wollen, können wir mal den Debugger anschmeißen und schauen was-->
+<!--                    die genauen Werte sind.-->
+<!--                </p>-->
+<!--                <div>-->
+<!--                    <img src="pics/u2/2_5_debug.png" alt="" style="height: 120px">-->
+<!--                </div>-->
+<!--                <p>-->
+<!--                    Also wenn man es ganz genau wissen will, dann ist die Periodendauer im Durchschnitt bei-->
+<!--                    <b>633 / 67 = <u>9,44</u></b>-->
+<!--                </p>-->
+<!--                <hr>-->
+<!--                <p>-->
+<!--                    Wenn wir nun mit 2x Down-Sampling betreiben, verletzen wir das Abtasttheorem nicht,-->
+<!--                    da wir bei 9 Pixeln jedes 2e abtasten-->
+<!--                    <br>-->
+<!--                    <b>9 / 2 = 4,5 -&ndash;&gt; 9,44 > 2 * 4,5</b>-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Wenn wir mit 3x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem!</u>,-->
+<!--                    da wir bei 9 Pixeln jedes 3e abtasten-->
+<!--                    <br>-->
+<!--                    <b>9 / 3 = 3 -&ndash;&gt; 9,44 > 2 * 3</b>-->
+<!--                    <br>-->
+<!--                    Daher können wir schon ein leichtes Moiré-Muster erkennen!-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    Wenn wir nun 4x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem um so mehr!</u>,-->
+<!--                    da wir bei 9 Pixeln jedes 4e abtasten-->
+<!--                    <br>-->
+<!--                    <b>9 / 4 = 2,25 -&ndash;&gt; 9,44 > 2 * 2,25</b>-->
+<!--                    <br>-->
+<!--                    Daher können wir schon sehr deutlich das Moiré-Muster erkennen!-->
+<!--                </p>-->
+<!--            </div>-->
             <hr>
-
             <div>
                 <h3>Schauen wir uns nun unsere eigenen Bilder an</h3>
                 <!-- TODO -->
