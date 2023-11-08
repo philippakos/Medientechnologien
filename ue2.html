@@ -332,52 +332,159 @@
                 </div>
             </div>
 
-<!--            <div>-->
-<!--                <p>-->
-<!--                    <b>Erklärung nach Abtasttheorem:</b>-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Wir hatten in Aufgabe 2.1 die Periodendauer von "grating_h12" auf ca. <b>9</b> Pixel geschätzt.-->
-<!--                    (Allerdings war das eine Division ohne Rest).-->
-<!--                    <br>-->
-<!--                    Wenn wir ganz genau sein wollen, können wir mal den Debugger anschmeißen und schauen was-->
-<!--                    die genauen Werte sind.-->
-<!--                </p>-->
-<!--                <div>-->
-<!--                    <img src="pics/u2/2_5_debug.png" alt="" style="height: 120px">-->
-<!--                </div>-->
-<!--                <p>-->
-<!--                    Also wenn man es ganz genau wissen will, dann ist die Periodendauer im Durchschnitt bei-->
-<!--                    <b>633 / 67 = <u>9,44</u></b>-->
-<!--                </p>-->
-<!--                <hr>-->
-<!--                <p>-->
-<!--                    Wenn wir nun mit 2x Down-Sampling betreiben, verletzen wir das Abtasttheorem nicht,-->
-<!--                    da wir bei 9 Pixeln jedes 2e abtasten-->
-<!--                    <br>-->
-<!--                    <b>9 / 2 = 4,5 -&ndash;&gt; 9,44 > 2 * 4,5</b>-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Wenn wir mit 3x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem!</u>,-->
-<!--                    da wir bei 9 Pixeln jedes 3e abtasten-->
-<!--                    <br>-->
-<!--                    <b>9 / 3 = 3 -&ndash;&gt; 9,44 > 2 * 3</b>-->
-<!--                    <br>-->
-<!--                    Daher können wir schon ein leichtes Moiré-Muster erkennen!-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Wenn wir nun 4x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem um so mehr!</u>,-->
-<!--                    da wir bei 9 Pixeln jedes 4e abtasten-->
-<!--                    <br>-->
-<!--                    <b>9 / 4 = 2,25 -&ndash;&gt; 9,44 > 2 * 2,25</b>-->
-<!--                    <br>-->
-<!--                    Daher können wir schon sehr deutlich das Moiré-Muster erkennen!-->
-<!--                </p>-->
-<!--            </div>-->
+            <!--            <div>-->
+            <!--                <p>-->
+            <!--                    <b>Erklärung nach Abtasttheorem:</b>-->
+            <!--                </p>-->
+            <!--                <p>-->
+            <!--                    Wir hatten in Aufgabe 2.1 die Periodendauer von "grating_h12" auf ca. <b>9</b> Pixel geschätzt.-->
+            <!--                    (Allerdings war das eine Division ohne Rest).-->
+            <!--                    <br>-->
+            <!--                    Wenn wir ganz genau sein wollen, können wir mal den Debugger anschmeißen und schauen was-->
+            <!--                    die genauen Werte sind.-->
+            <!--                </p>-->
+            <!--                <div>-->
+            <!--                    <img src="pics/u2/2_5_debug.png" alt="" style="height: 120px">-->
+            <!--                </div>-->
+            <!--                <p>-->
+            <!--                    Also wenn man es ganz genau wissen will, dann ist die Periodendauer im Durchschnitt bei-->
+            <!--                    <b>633 / 67 = <u>9,44</u></b>-->
+            <!--                </p>-->
+            <!--                <hr>-->
+            <!--                <p>-->
+            <!--                    Wenn wir nun mit 2x Down-Sampling betreiben, verletzen wir das Abtasttheorem nicht,-->
+            <!--                    da wir bei 9 Pixeln jedes 2e abtasten-->
+            <!--                    <br>-->
+            <!--                    <b>9 / 2 = 4,5 -&ndash;&gt; 9,44 > 2 * 4,5</b>-->
+            <!--                </p>-->
+            <!--                <p>-->
+            <!--                    Wenn wir mit 3x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem!</u>,-->
+            <!--                    da wir bei 9 Pixeln jedes 3e abtasten-->
+            <!--                    <br>-->
+            <!--                    <b>9 / 3 = 3 -&ndash;&gt; 9,44 > 2 * 3</b>-->
+            <!--                    <br>-->
+            <!--                    Daher können wir schon ein leichtes Moiré-Muster erkennen!-->
+            <!--                </p>-->
+            <!--                <p>-->
+            <!--                    Wenn wir nun 4x Down-Sampling betreiben, <u>verletzen wir das Abtasttheorem um so mehr!</u>,-->
+            <!--                    da wir bei 9 Pixeln jedes 4e abtasten-->
+            <!--                    <br>-->
+            <!--                    <b>9 / 4 = 2,25 -&ndash;&gt; 9,44 > 2 * 2,25</b>-->
+            <!--                    <br>-->
+            <!--                    Daher können wir schon sehr deutlich das Moiré-Muster erkennen!-->
+            <!--                </p>-->
+            <!--            </div>-->
             <hr>
+            <br>
+            <br>
+            <br>
             <div>
-                <h3>Schauen wir uns nun unsere eigenen Bilder an</h3>
-                <!-- TODO -->
+                <h2>Schauen wir uns nun unsere eigenen Bilder an</h2>
+
+                <h3>Bei Nature_FOOBAR</h3>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_1.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 1x Down-Sampling kein großer Unterschied zu sehen.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Nature_FOOBAR_downsampling_1x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_2.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 2x Down-Sampling sieht man schon leicht einen Unterschied.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Nature_FOOBAR_downsampling_2x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_3.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 3x Down-Sampling wird es schon nicht schön.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Nature_FOOBAR_downsampling_3x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_4.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 4x Down-Sampling ist es schlicht weg schlecht.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Nature_FOOBAR_downsampling_4x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+
+                <hr>
+                <br>
+                <br>
+                <h3>Bei Manmade_FOOBAR</h3>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_1.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 1x Down-Sampling kein großer Unterschied zu sehen.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Manmade_FOOBAR_downsampling_1x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_2.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 2x Down-Sampling sieht man schon leicht einen Unterschied.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Manmade_FOOBAR_downsampling_2x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_3.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 3x Down-Sampling kann man noch mit leben.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Manmade_FOOBAR_downsampling_3x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_4.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 4x Down-Sampling wird es schon langsam unschön.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Manmade_FOOBAR_downsampling_4x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_5.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 5x Down-Sampling ist es schon ziemlich rau.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Manmade_FOOBAR_downsampling_5x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-2 row align-items-center">
+                    <div class="col-6">
+                        <img src="pics/u2/2_5_code_6.png" alt="" style="height: 30px" class="mb-2">
+                        <p>Bei 6x Down-Sampling ist unsere Toleranzgrenze erreicht.</p>
+                    </div>
+                    <div class="col-6">
+                        <img src="pics/u2/Manmade_FOOBAR_downsampling_6x.bmp" alt="" style="width: 100%">
+                    </div>
+                </div>
             </div>
         </div>
     </article>
@@ -433,7 +540,8 @@
 
             <h4 class="mb-2">Lösung:</h4>
             <div class="mb-2">
-                <h2 class="mb-2" style="background-color: #888888; color: white; padding: 12px">Reduced Bits: Nature & Manmade</h2>
+                <h2 class="mb-2" style="background-color: #888888; color: white; padding: 12px">Reduced Bits: Nature &
+                    Manmade</h2>
                 <div class="mb-2 row align-items-center">
                     <div style="white-space: nowrap;">
                         <h3>1 Bit</h3>
