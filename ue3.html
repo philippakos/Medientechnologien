@@ -1,0 +1,528 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/format.css">
+    <link rel="stylesheet" type="text/css" href="styles/flex-utils.css">
+</head>
+
+<body style="padding: 30px;">
+
+<h2 class="mb-2">Übung 3 – Audio: Harmonische Klänge, dB-Rechnung, Synthetische Klangerzeugung</h2>
+
+<!-- ################################################ AUFGABE 2 ################################################-->
+<section class="group">
+    <h3 class="mb-2">Aufgaben</h3>
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                <b>1. Einfache Schwingungsformen:</b> Zunächst brauchen wir nur die oben beschriebenen
+                Module. Wir schauen uns die Wellenformen der Grundklänge des Oszillators an
+                (Sägezahn, Rechteck, etc.). Wir können nun Beispiele der einzelnen Klänge durch
+                Drücken einer Taste spielen und mit dem Recorder aufzeichnen. Wie man das RecorderPlugin aktiviert,
+                zeige ich im Übungstermin! Man benötigt dafür einen (kostenfreien)
+                VCVRack-Account.
+            </p>
+            <p>
+                2. Außerdem lässt sich in Praat das Spektrum anzeigen (Wave einlesen, To Spectrum…,
+                Edit). Es erscheint eine Liniendarstellung des Amplitudenspektrums mit dB-Angaben. Aus
+                diesen können wir dann lineare Prozentwerte mit Bezug auf die Grundschwingung
+                berechnen. Wir setzen dazu die Amplitude der Grundschwingung mit 0 dB entsprechend
+                100 % an. Bei der Square-Welle variieren wir die Pulsweite, d.h. das zeitliche Verhältnis
+                zwischen positivem und negativem Schwingungsteil, mit dem Regler P-WIDTH am
+                Oszillator) und beobachten, wie sich das Verhältnis der Obertöne verändert. Dazu
+                betrachten wir drei Fälle: 50/50, 30/70 und 10/90 zwischen positivem und negativem Teil,
+                ablesbar am Oszilloskop.
+            </p>
+            <p>
+                (Ins Ergebnisprotokoll: Bilder der Spektren für drei markante P-Width-Einstellungen beim
+                Rechteck, ein Sägezahn, ein Dreieck, Ausschnitte aus den wavs, Angaben der
+                Frequenzen und Amplituden in dB und Prozentwerten für die Grundschwingung und die
+                ersten drei Obertöne, bei denen die Amplitude größer 0 ist).
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div>
+
+                <!-- TRIANGLE -->
+                <div class="mb-2">
+                    <div class="mb-2">
+                        <h2 class="mb-2">triangle.wav</h2>
+                        <div>
+                            <audio controls>
+                                <source src="audio/u3/triangle.wav" type="audio/wav">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/triangle_base.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/triangle_sub1.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/triangle_sub2.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/triangle_sub3.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-12">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Ton</th>
+                                    <th>Frequenz (Hz)</th>
+                                    <th>Amplitude (dB)</th>
+                                    <th>Differenz (zum Grundton in dB)</th>
+                                    <th>%</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>Grundton</td>
+                                    <td>300 Hz</td>
+                                    <td>86.7 dB</td>
+                                    <td>0.0 dB</td>
+                                    <td>100 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 1</td>
+                                    <td>980 Hz</td>
+                                    <td>67.6 dB</td>
+                                    <td>-19.1 dB</td>
+                                    <td>11.09%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 2</td>
+                                    <td>1639 Hz</td>
+                                    <td>57.5 dB</td>
+                                    <td>-29.2 dB</td>
+                                    <td>3.46%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 3</td>
+                                    <td>2277 Hz</td>
+                                    <td>53.2 dB</td>
+                                    <td>-33.5 dB</td>
+                                    <td>2.113%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- SAW -->
+                <div class="mb-2">
+                    <div class="mb-2">
+                        <h2 class="mb-2">saw.wav</h2>
+                        <div>
+                            <audio controls>
+                                <source src="audio/u3/saw.wav" type="audio/wav">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/saw_base.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/saw_sub1.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/saw_sub2.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/saw_sub3.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-12">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Ton</th>
+                                    <th>Frequenz (Hz)</th>
+                                    <th>Amplitude (dB)</th>
+                                    <th>Differenz (zum Grundton in dB)</th>
+                                    <th>%</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>Grundton</td>
+                                    <td>3.2 Hz</td>
+                                    <td>85.8 dB</td>
+                                    <td>0.0 dB</td>
+                                    <td>100 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 1</td>
+                                    <td>322 Hz</td>
+                                    <td>81.7 dB</td>
+                                    <td>-4.1 dB</td>
+                                    <td>62.37%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 2</td>
+                                    <td>662 Hz</td>
+                                    <td>74.5 dB</td>
+                                    <td>-11.3 dB</td>
+                                    <td>27.22%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 3</td>
+                                    <td>980 Hz</td>
+                                    <td>70.0 dB</td>
+                                    <td>-15.8 dB</td>
+                                    <td>16.21%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- SQUARE 50/50 -->
+                <div class="mb-2">
+                    <div class="mb-2">
+                        <h2 class="mb-2">square_50_50.wav</h2>
+                        <div>
+                            <audio controls>
+                                <source src="audio/u3/square_50_50.wav" type="audio/wav">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_50_50_base.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_50_50_sub1.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_50_50_sub2.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_50_50_sub3.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-12">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Ton</th>
+                                    <th>Frequenz (Hz)</th>
+                                    <th>Amplitude (dB)</th>
+                                    <th>Differenz (zum Grundton in dB)</th>
+                                    <th>%</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>Grundton</td>
+                                    <td>322 Hz</td>
+                                    <td>90.0 dB</td>
+                                    <td>0.0 dB</td>
+                                    <td>100 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 1</td>
+                                    <td>981 Hz</td>
+                                    <td>77.7 dB</td>
+                                    <td>-12.3 dB</td>
+                                    <td>24.26%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 2</td>
+                                    <td>1640 Hz</td>
+                                    <td>70.7 dB</td>
+                                    <td>-19.3 dB</td>
+                                    <td>10.83%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 3</td>
+                                    <td>2298 Hz</td>
+                                    <td>71.5 dB</td>
+                                    <td>-18.5 dB</td>
+                                    <td>11.88%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- SQUARE 30/70 -->
+                <div class="mb-2">
+                    <div class="mb-2">
+                        <h2 class="mb-2">square_30_70.wav</h2>
+                        <div>
+                            <audio controls>
+                                <source src="audio/u3/square_30_70.wav" type="audio/wav">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_30_70_base.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_30_70_sub1.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_30_70_sub2.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_30_70_sub3.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-12">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Ton</th>
+                                    <th>Frequenz (Hz)</th>
+                                    <th>Amplitude (dB)</th>
+                                    <th>Differenz (zum Grundton in dB)</th>
+                                    <th>%</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>Grundton</td>
+                                    <td>322 Hz</td>
+                                    <td>87.0 dB</td>
+                                    <td>0.0 dB</td>
+                                    <td>100 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 1</td>
+                                    <td>662 Hz</td>
+                                    <td>81.1 dB</td>
+                                    <td>-5.9 dB</td>
+                                    <td>50.69%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 2</td>
+                                    <td>981 Hz</td>
+                                    <td>67.0 dB</td>
+                                    <td>-20 dB</td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 3</td>
+                                    <td>1321 Hz</td>
+                                    <td>69.5 dB</td>
+                                    <td>-17.5 dB</td>
+                                    <td>13.33%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- SQUARE 10/90 -->
+                <div class="mb-2">
+                    <div class="mb-2">
+                        <h2 class="mb-2">square_10_90.wav</h2>
+                        <div>
+                            <audio controls>
+                                <source src="audio/u3/square_10_90.wav" type="audio/wav">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_10_90_base.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_10_90_sub1.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_10_90_sub2.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u3/square_10_90_sub3.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-12">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Ton</th>
+                                    <th>Frequenz (Hz)</th>
+                                    <th>Amplitude (dB)</th>
+                                    <th>Differenz (zum Grundton in dB)</th>
+                                    <th>%</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>Grundton</td>
+                                    <td>322 Hz</td>
+                                    <td>80.2 dB</td>
+                                    <td>0.0 dB</td>
+                                    <td>100 %</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 1</td>
+                                    <td>662 Hz</td>
+                                    <td>78.8 dB</td>
+                                    <td>-1.4 dB</td>
+                                    <td>85.11%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 2</td>
+                                    <td>981 Hz</td>
+                                    <td>76.0 dB</td>
+                                    <td>-4.2 dB</td>
+                                    <td>61.65%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unterton 3</td>
+                                    <td>1300 Hz</td>
+                                    <td>73.0 dB</td>
+                                    <td>-7.2 dB</td>
+                                    <td>43.65%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                <b>Schwebung:</b> Nun bringen wir einen zweiten Oszillator zum Einsatz. Um die
+                Ausgänge der beiden Oszillatoren anschließen und in der Lautstärke regeln zu können,
+                benötigen wir ein MIXER-Modul, das wir zwischen die beiden VCAs und AUDIO schalten.
+            </p>
+            <p>
+                Zunächst stellen wir beide Oszillatoren auf exakt dieselbe Frequenz und
+                Dreiecksschwingung. Dann verstimmen wir den zweiten gegen den ersten und zeichnen
+                den Klang auf, wenn wir gerade eine Amplitudenmodulation feststellen (Fall A), d.h. einen
+                in der Lautstärke schwankenden Ton. Wir verstimmen die Oszillatoren weiter
+                gegeneinander, bis wir den Eindruck einer Dissonanz haben (Fall B), d.h. es entsteht ein
+                rauer, unangenehmer Klang.
+                Beachte, dass der Regler 'FREQ' den betreffenden Oszillator in etwa um Halbtöne
+                verstimmt, während 'FINE' dies um Bruchteile von Halbtöne tut. Am besten experimentiert
+                man zunächst mit dem 'FINE'-Regler und erst, wenn z.B. bei Fall B sich der gewünschte
+                Effekt nicht einstellt, mit dem 'FREQ'-Regler.
+            </p>
+            <p>
+                Nun stellen wir mit Praat im Spektrum für die beiden Fälle die Mittel- und
+                Differenzfrequenzen der Schwingungen fest. Man kann die Differenzfrequenz aber auch aus
+                dem Oszillogramm der amplitudenmodulierten Schwingung berechnen (z.B. in Samplitude
+                anschauen). Die Periodendauer der Differenzfrequenz entspricht nämlich exakt dem
+                Abstand zwischen zwei Punkten maximaler (oder minimaler) Amplitude. Ins Ergebnisprotokoll für beide
+                Fälle: Mittenfrequenz und Differenzfrequenz, Zeitdarstellung, Spektrum und wav.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div>
+                <h1>ERBITTEN MEHR ZEIT :(</h1>
+            </div>
+        </div>
+    </article>
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Klangnachbildung: Wir wollen nun versuchen, selber einen interessanten Klang zu
+                kreieren. Die einzigen Anforderungen ist, dass wir dazu die für Aufgabe 4 vorgesehene
+                Taste drücken, und dass es ein monophoner Klang ist, d.h. dass nur eine Taste gedrückt
+                wird und eine Note
+                erklingt.
+            </p>
+            <p>
+                Ins Protokoll: Eine kurze verbale Beschreibung dazu, was ihr euch zu dem Klang überlegt
+                habt. Aufbau bzgl. des verwendeten Oszillators, ADSR-Einstellungen und Filtertyp.
+                Endgültige Struktur des Synthesizers mit VCV-Rack-Patch-Datei, Klangprobe als wav,
+                Hüllkurve als Bild, z.B. aus Audacity.
+            </p>
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <div>
+                <p>
+                    Wir haben uns für einen sehr primitiven Sound entschieden, und zwar eine Trommel mit einem
+                    "Leder" Sound (Kriegstrommel).
+                </p>
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <img class="mb-1"
+                             src="pics/u3/VCV_drums.png" alt=" " style="width: 100%; max-height: 300px">
+                        <p>
+                            Hier der Download:
+                            <a class="download-link"
+                               href="files/Synth_War_Drum.vcv" target="_blank">Synth_War_Drum.vcv</a>
+                        </p>
+                    </div>
+                    <div class="col-6 pl-2">
+                        <p>Der Sound an sich (ein Schlag)</p>
+                        <audio controls>
+                            <source src="audio/u3/drum_one_hit.wav" type="audio/wav">
+                        </audio>
+                        <br>
+                        <br>
+                        <p>Eine kleine Einlage (Wir konnten nicht "nicht herumspielen").</p>
+                        <audio controls>
+                            <source src="audio/u3/vcv_war-drum.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <p>
+                        Nehmen wir nun den einzelnen Trommelschlag und jagen ihn durch PRAAT kriegen wir folgende
+                        Hüllkurve:
+                    </p>
+                    <img src="pics/u3/drum_curve.png" alt=" " style="width: 100%;">
+
+                </div>
+                <div class="row">
+                    <p class="col-12">
+                        Und hier nochmal der Envelope.
+                    </p>
+                    <div class="col-4">
+                        <img class="mb-1"
+                             src="pics/u3/drum_envelope.png" alt=" " style="height: 400px">
+                    </div>
+                    <div class="col-8 pl-2">
+                        <p>
+                            Da es sich bei einer Trommel um ein Schlaginstrument handelt, ist die <b>Attack</b> sehr
+                            niedrig (allerdings nicht zu niedrig damit es nicht so sehr "knirscht").
+                        </p>
+                        <p>
+                            Das <b>Decay</b> ist relativ kurz. So ein Trommelschlag soll schnell abklingen.
+                        </p>
+                        <p>
+                            Das <b>Sustain</b> ist bei 0. Keiner kann eine Trommel "gedrückt halten" bzw einen langen
+                            Schlag spielen.
+                        </p>
+                        <p>
+                            Das <b>Release</b> ist auch relativ kurz aber vorhanden.
+                            Nach einen Trommelschlag vibriert die Membran für kurze Zeit.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+</section>
+</body>
+</html>
