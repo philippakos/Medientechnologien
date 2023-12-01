@@ -1,0 +1,246 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/format.css">
+    <link rel="stylesheet" type="text/css" href="styles/flex-utils.css">
+</head>
+
+<body style="padding: 30px;">
+
+    <h2 class="mb-2">Übung 4 – Manipulation von Bildparametern, Farbsysteme</h2>
+
+    <!-- ################################################ AUFGABE 1 ################################################-->
+    <!-- ##  Ins Übungsprotokoll: Sourcecode, Bilder R, G, B bzw. Y, Cb und Cr, Rekonstruiertes Bild YCbCr -> RGB ##-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 1: RGB und YCbCr</h3>
+        <!-- ############### 1.a ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    RGB ist der gebräuchlichste Farbraum bei der Aufzeichnung und Darstellung von Bildern. Hier wird das
+                    Lichtspektrum in seine Rot-, Grün- und Blauanteile aufgespalten. Der YCbCr Farbraum hingegen besteht
+                    aus
+                    der Luminanz Y (Helligkeit) und den Farbanteilen (Chrominanz) Cb und Cr. Die RGB Farben eines Bildes
+                    lassen sich also in den YCbCr Farbraum transformieren. Für viele Anwendungen, z.B. die
+                    Bildkompression,
+                    ist es günstig, Helligkeits- und Farbinformation getrennt zu verarbeiten. Nenne den physiologischen
+                    Grund
+                    dafür!
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 1.b ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Erstelle aus deinen eigenen Bildern Versionen, die nur jeweils den Rot-, Grün- und Blauanteil
+                    zeigen.(Hinweis: Dazu müssen einfach die jeweils anderen Farbwerte auf null gesetzt werden).
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 1.c ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.c</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Nun transformiere deine RGB-Bilder nach YCbCr. Lese dafür jedes Pixel ein und berechne die
+                    Helligkeit
+                    Y (Luminanzformel!) sowie die Chrominanzen Cb und Cr (Chrominanzformeln!) aus den RGB Werten.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 1.d ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.d</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Wandle zunächst zur Rekonstruktion deines Bildes die YCbCr Werte zurück in RGB.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 1.e ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.e</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Benutze nun die Rekonstruktionsformel, um RGB-Bilder für die einzelnen Kanäle Y, Cb und Cr zu
+                    erzeugen. Dabei werden stets die anderen beiden Kanäle auf 128 gesetzt.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ################################################ AUFGABE 2 ################################################-->
+    <!-- ########################## Ins Übungsprotokoll: Sourcecode, Histogramm des Bildes #########################-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 2: Histogramm</h3>
+
+        <!-- ############### 2 ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 2</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Mithilfe eines Histogramms kann die Verteilung (Häufigkeit) der Helligkeiten eines Bildes
+                    dargestellt
+                    werden. Erstelle Histogramme für die Y-Bilder aus Aufgabe 1. Lese dafür den Helligkeitswert der
+                    Pixel ein
+                    und bestimme die Helligkeitshäufigkeiten (Anzahl gleicher Helligkeiten). Diese sollen in eine
+                    Textdatei
+                    geschrieben und als Histogramm dargestellt werden (z.B. in Excel, Java).
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ################################################ AUFGABE 3 ################################################-->
+    <!-- ###### Ins Übungsprotokoll: Sourcecode, Ergebnisse für mittlere Helligkeit und Kontrast, Ergebnisse  ######-->
+    <!-- ######### Minimum/Maximum für Helligkeit und Kontrast mit dazugehörigen Histogrammen, Alle Bilder #########-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 3: Helligkeit und Kontrast</h3>
+
+        <!-- ############### 3.a ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 3.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Berechne die mittlere Helligkeit der monochromen Bilder aus Aufgabe 1 (Y - Bilder). Lese dafür den
+                    Helligkeitswert der Pixel ein. Die mittlere Helligkeit ist die Summe aller Helligkeitswerte geteilt
+                    durch die
+                    Anzahl der Bildpunkte. Berechne auch den Kontrast der Bilder, d.h. die Standardabweichung der
+                    Helligkeit.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 3.b ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 3.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Verändere das monochrome Nature-Bild in der Helligkeit durch Subtrahieren der Werte h=(-20, -40,
+                    -60, -80) bzw. Addieren der Werte h=(20, 40, 60, 80). Beachte dabei, dass ihr beim Ergebnis der
+                    Pixelwert-berechnung im 8-Bit-Bereich bleibt. Berechne die Histogramme des hellsten und dunkelsten
+                    Bildes
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 3.c ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 3.c</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Erhöhe bzw. verringere den Kontrast durch Multiplikation mit den Faktoren k=(0.2, 0.4, 0.8, 1.0)
+                    sowie
+                    k=(1.5, 2.5, 5.0, 10.0). Was würde bei einer Kontraständerung mit k < 0 passieren (Einfach
+                        ausprobieren und Bild speichern!)? Berechne auch hier das Histogramm des kontrastärmsten und
+                        kontrastreichsten Bildes und vergleiche mit denen der Helligkeitsänderung. Was haben
+                        Helligkeits- und Kontraständerung für eine Auswirkung auf das Histogramm (Vergleiche auch mit
+                        dem Histogramm aus Aufgabe 2)? </p>
+
+                        <hr class="mb-2">
+
+                        <h4 class="mb-2">Lösung:</h4>
+                        <div class="mb-2">
+
+                        </div>
+            </div>
+        </article>
+    </section>
+</body>
+
+</html>
