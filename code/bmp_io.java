@@ -14,17 +14,15 @@ public final class bmp_io {
 		for (String filestring : files) {
 
 			BmpImage bmp = null;
-			String file = "pics/u4/" + filestring + "_FOOBAR.bmp";
+			String file = "pics/u4/" + filestring + "_FOOBAR_YCbCr_Y.bmp";
 			InputStream in = new FileInputStream(file);
 			bmp = BmpReader.read_bmp(in);
 			
-			createImages(bmp, filestring);
-			//printHistogramOfY(bmp, filestring);
+			printHistogramOfY(bmp, filestring);
 		}
 	}
 
 	private static void printHistogramOfY (BmpImage bmp, String filestring) throws FileNotFoundException {
-		bmp = toYCbCr(bmp);
 		int[] values = new int[256];
 		PrintWriter writer = new PrintWriter("files/u4/" + filestring + "_Y_Histogramm.txt");
 		for (int y = 0; y < bmp.image.getHeight(); y++) {
