@@ -14,17 +14,15 @@ public final class bmp_io {
 		for (String filestring : files) {
 
 			BmpImage bmp = null;
-			String file = "pics/u4/" + filestring + "_FOOBAR.bmp";
+			String file = "pics/u4/" + filestring + "_FOOBAR_YCbCr_Y.bmp";
 			InputStream in = new FileInputStream(file);
 			bmp = BmpReader.read_bmp(in);
 			
-			//createImages(bmp, filestring);
 			printHistogramOfY(bmp, filestring);
 		}
 	}
 
 	private static void printHistogramOfY (BmpImage bmp, String filestring) throws FileNotFoundException {
-		bmp = toYCbCr(bmp);
 		int[] values = new int[256];
 		PrintWriter writer = new PrintWriter("files/u4/" + filestring + "_Y_Histogramm.txt");
 		for (int y = 0; y < bmp.image.getHeight(); y++) {
@@ -42,9 +40,9 @@ public final class bmp_io {
 	private static void createImages(BmpImage bmp, String filestring) throws IOException {
 		String outFilename = null;
 		bmp = toYCbCr(bmp);
-		bmp = toYCbCrChannel(bmp, "Y");
+		bmp = toRGBImage(bmp, "Cb");
 
-		outFilename = "pics/u4/" + filestring + "_FOOBAR_YCbCr_test.bmp";
+		outFilename = "pics/u4/" + filestring + "_FOOBAR_YCbCr_Cb.bmp";
 		OutputStream out = new FileOutputStream(outFilename);
 
 		try {
@@ -69,7 +67,7 @@ public final class bmp_io {
 		return bmp;
 	}
 
-	private static BmpImage toRGB(BmpImage bmp) {
+	private static BmpImage toRGB(BmpImage bmp, String channel) {
 		for (int y = 0; y < bmp.image.getHeight(); y++) {
 			for (int x = 0; x < bmp.image.getWidth(); x++) {
 				PixelColor px = bmp.image.getRgbPixel(x, y);
@@ -79,6 +77,43 @@ public final class bmp_io {
 				px.r = Math.max(Math.min(newR, 255), 0);
 				px.g = Math.max(Math.min(newG, 255), 0);
 				px.b = Math.max(Math.min(newB, 255), 0);
+			}
+		}
+		return bmp;
+	}
+
+	private static BmpImage toRGBImage(BmpImage bmp, String channel) {
+		for (int y = 0; y < bmp.image.getHeight(); y++) {
+			for (int x = 0; x < bmp.image.getWidth(); x++) {
+				PixelColor px = bmp.image.getRgbPixel(x, y);
+				int newR = 0;
+				int newG = 0;
+				int newB = 0;
+				switch (channel) {
+					case "Y":
+						newR = px.r;
+						newG = 128;
+						newB = 128;
+						break;
+					case "Cb":
+						newR = 128;
+						newG = px.g;
+						newB = 128;
+						break;
+					case "Cr":
+						newR = 128;
+						newG = 128;
+						newB = px.b;
+						break;
+					default:
+						throw new RuntimeException("Channel name " + channel + " not valid");
+				}
+				px.r = (int) (newR + (newB - 128) * 1.403);
+				px.g = (int) (newR + (newG - 128) * -0.344 + (newB - 128) * -0.714);
+				px.b = (int) (newR + (newG - 128) * 1.773);
+				px.r = Math.max(Math.min(px.r, 255), 0);
+				px.g = Math.max(Math.min(px.g, 255), 0);
+				px.b = Math.max(Math.min(px.b, 255), 0);
 			}
 		}
 		return bmp;
