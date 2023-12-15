@@ -1,0 +1,191 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/format.css">
+    <link rel="stylesheet" type="text/css" href="styles/flex-utils.css">
+</head>
+
+<body style="padding: 30px;">
+
+<h2 class="mb-2">Übung 5: Diskrete Systeme, Clipping, Echo, Filter</h2>
+
+<!-- ################################################ AUFGABE 1 ################################################-->
+<!-- ##  Ins Übungsprotokoll: Sourcecode, Bilder R, G, B bzw. Y, Cb und Cr, Rekonstruiertes Bild YCbCr -> RGB ##-->
+
+<section class="group">
+    <h3 class="mb-2">Aufgabe 1: Klirrfaktor</h3>
+    <!-- ############### 1.a ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.a</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Zunächst sollt ihr eure Musikdatei um die Verstärkung 3, 6 und 9dB verstärken. Dies
+                realisiert ihr durch Multiplikation der Abtastwerte mit dem linearen Verstärkungsfaktor F, den
+                ihr zunächst aus der Verstärkung in dB berechnen müsst.
+                Dabei wird es bei hoher Verstärkung zwangsläufig zu einem sogenannten Clipping kommen, d.h.
+                das Produkt aus der Originalamplitude und dem Verstärkungsfaktor ist betragsmäßig größer als
+                der maximal darstellbare Amplitudenwert (bei 16 bit < -32768 bzw. > 32767). In diesem Fall muss dafür
+                gesorgt werden, dass der resultierende Wert auf genau -32768, bzw. 32767 gesetzt
+                wird. Clipping ist akustisch als immer stärker werdende Verzerrung des Musiksignals
+                wahrnehmbar.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+
+    <!-- ############### 1.b ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.b</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Bei welcher Verstärkung wird eine Verzerrung wahrnehmbar?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+
+    <!-- ############### 1.c ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 1.c</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Ihr sollt nun die 1kHz-Sinusschwingung um 6, 9 und 12 dB verstärken und den
+                resultierenden Klirrfaktor k berechnen. Der Klirrfaktor lässt sich aus dem Frequenzspektrum
+                berechnen (PRAAT: Read File..., ToSpectrum..., Edit) alle sichtbaren Obertöne für die
+                Berechnungberücksichtigen!).
+                Beachte: Die dB-Angaben der Amplituden aus PRAAT müssen vor dem Einsetzen in die
+                Klirrfaktor-Formel in lineare Angaben, d.h. die An , umgerechnet werden.
+                Ins Übungsprotokoll: Sourcecode, wavs Musik und Sinus, Ausschnitte vom Clipping (z.B. aus
+                Audacity oder Praat), Frequenzspektrum des Sinus (PRAAT), Berechnungen Klirrfaktor k.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+</section>
+
+<!-- ################################################ AUFGABE 2 ################################################-->
+<!-- ########################## Ins Übungsprotokoll: Sourcecode, Histogramm des Bildes #########################-->
+
+<section class="group">
+    <h3 class="mb-2">Aufgabe 2: Echo</h3>
+
+    <!-- ############### 2 ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.a</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Implementiert ein Echo mit einer Verzögerung von 10, 100 und 200ms und dem
+                Verstärkungsfaktor a = 0.6. Um wie viele Abtastwerte N müssen wir verzögern, wenn wir mit
+                einer Abtastrate von 44.1 kHz arbeiten?
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 2.b</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Wendet das Echo auf eure Sprach- und Musiksignal an. Es kann sein, dass die 10ms nur bei
+                einem recht trockenen Soundfile wie der Sprachaufnahme hörbar werden.
+                Hinweis: Bei Stereodateien muss berücksichtigt werden, dass linker und rechter Kanal getrennt
+                verzögert werden müssen. Die Samples für links und rechts liegen im Samplearray jeweils
+                hintereinander.
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+</section>
+
+<!-- ################################################ AUFGABE 3 ################################################-->
+
+<section class="group">
+    <h3 class="mb-2">Aufgabe 3: Einfaches Filter</h3>
+
+    <!-- ############### 3.a ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.a</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Ein sehr einfaches Filter kann man z.B. mit der Zuordnungsvorschrift
+                <br>
+                y(k) = 0.5 * x(k) + 0.45 * x(k-1)
+                <br>
+                realisieren. Programmiert das Filter und vergleicht die Musikdatei vor und nach der Filterung.
+                Tut dasselbe mit der Zuordnungsvorschrift
+                <br>
+                y(k) = 0.5 * x(k) - 0.45 * x(k-1)
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+
+    <!-- ############### 3.b ############### -->
+    <article class="card mb-2">
+        <div class="card-header">
+            <h3>Aufgabe 3.b</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="mb-2">Aufgabestellung:</h4>
+            <p>
+                Zum Testen der Filter verwendet Weißes Rauschen, das alle Frequenzen enthält. Wenn wir
+                nun den Frequenzverlauf des Originalaudios mit dem gefilterten vergleichen, muss sich ein
+                Verlauf wie in der unteren Darstellung ergeben. Um was für eine Art Filter handelt es sich
+                jeweils?
+                Ins Übungsprotokoll: Sourcecode, wavs Musik und Rauschen, Spektrum PRAAT
+            </p>
+
+            <hr class="mb-2">
+
+            <h4 class="mb-2">Lösung:</h4>
+            <!-- TODO -->
+        </div>
+    </article>
+</section>
+</body>
+
+</html>
