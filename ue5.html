@@ -1,0 +1,466 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/format.css">
+    <link rel="stylesheet" type="text/css" href="styles/flex-utils.css">
+</head>
+
+<body style="padding: 30px;">
+
+    <h2 class="mb-2">Übung 5: Diskrete Systeme, Clipping, Echo, Filter</h2>
+
+    <!-- ################################################ AUFGABE 1 ################################################-->
+    <!-- ##  Ins Übungsprotokoll: Sourcecode, wavs Musik und Sinus, Ausschnitte vom Clipping (z.B. aus Audacity   ##-->
+    <!-- ##            oder Praat), Frequenzspektrum des Sinus (PRAAT), Berechnungen Klirrfaktor k.               ##-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 1: Klirrfaktor</h3>
+        <!-- ############### 1.a ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Zunächst sollt ihr eure Musikdatei um die Verstärkung 3, 6 und 9dB verstärken. Dies
+                    realisiert ihr durch Multiplikation der Abtastwerte mit dem linearen Verstärkungsfaktor F, den
+                    ihr zunächst aus der Verstärkung in dB berechnen müsst.
+                    Dabei wird es bei hoher Verstärkung zwangsläufig zu einem sogenannten Clipping kommen, d.h.
+                    das Produkt aus der Originalamplitude und dem Verstärkungsfaktor ist betragsmäßig größer als
+                    der maximal darstellbare Amplitudenwert (bei 16 bit < -32768 bzw.> 32767). In diesem Fall muss dafür
+                        gesorgt werden, dass der resultierende Wert auf genau -32768, bzw. 32767 gesetzt
+                        wird. Clipping ist akustisch als immer stärker werdende Verzerrung des Musiksignals
+                        wahrnehmbar.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="col-6 mb-2">
+                    <img src="pics/u5/u5_1a.png" alt=" " style="width: 100%">
+                </div>
+                <div class="row p-1 mb-1">
+                    <div class="col-4">
+                        <h6>Um 3 dB verstärkt</h6>
+                        <audio controls>
+                            <source src="audio/u5/musik_mono_gain3.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h6>Um 6 dB verstärkt</h6>
+                        <audio controls>
+                            <source src="audio/u5/musik_mono_gain6.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h6>Um 9 dB verstärkt</h6>
+                        <audio controls>
+                            <source src="audio/u5/musik_mono_gain9.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 1.b ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Bei welcher Verstärkung wird eine Verzerrung wahrnehmbar?
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <p>
+                    Bei unserer Musikdatei ist bei sehr genauem hinhören bereits ab 9dB eine Verzerrung in den höheren
+                    Tönen wahrnehmbar, ab 12dB wird sie dann deutlich hörbar. Ab 15dB kann sie schon als überaus
+                    störrend
+                    wahrgenommen werden. (Lautstärke am besten runterdrehen).
+                </p>
+                <div class="mb-2">
+                    <h6>Um 12 dB verstärkt</h6>
+                    <audio controls>
+                        <source src="audio/u5/musik_mono_gain12.wav" type="audio/wav">
+                    </audio>
+                    <h6>Um 15 dB verstärkt</h6>
+                    <audio controls>
+                        <source src="audio/u5/musik_mono_gain15.wav" type="audio/wav">
+                    </audio>
+                </div>
+                <div class="mb-2">
+                    <b>Clipping bei 15dB Verstärkung:</b>
+                </div>
+                <img src="pics/u5/u5_1b.png" alt=" " style="width: 100%">
+            </div>
+        </article>
+
+        <!-- ############### 1.c ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.c</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Ihr sollt nun die 1kHz-Sinusschwingung um 6, 9 und 12 dB verstärken und den
+                    resultierenden Klirrfaktor k berechnen. Der Klirrfaktor lässt sich aus dem Frequenzspektrum
+                    berechnen (PRAAT: Read File..., ToSpectrum..., Edit) alle sichtbaren Obertöne für die
+                    Berechnungberücksichtigen!).
+                    Beachte: Die dB-Angaben der Amplituden aus PRAAT müssen vor dem Einsetzen in die
+                    Klirrfaktor-Formel in lineare Angaben, d.h. die An , umgerechnet werden.
+
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <b>Grundamplitude: 78,4dB</b>
+                <h4 class="mb-2">Um 6 dB verstärkt:</h4>
+                <div>
+                    <audio controls>
+                        <source src="audio/u5/sine_1k_05_gain6.wav" type="audio/wav">
+                    </audio>
+                    <div class="mb-2 row align-items-center">
+                        <div class="col-6 p-1">
+                            <img src="pics/u5/u5_1c_1.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            Es treten keine sichtbaren Obertöne auf.
+                            <br>
+                            Maximale Amplitude = 84,4dB
+                            <br>
+                            <b> k = 0 </b>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="mb-2">Um 9 dB verstärkt:</h4>
+                <div>
+                    <audio controls>
+                        <source src="audio/u5/sine_1k_05_gain9.wav" type="audio/wav">
+                    </audio>
+                    <div class="mb-2 row align-items-center">
+                        <div class="col-6 p-1">
+                            <img src="pics/u5/u5_1c_2.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            Es treten keine sichtbaren Obertöne auf.
+                            <br>
+                            Maximale Amplitude = 87,4dB
+                            <br>
+                            <b> k = 0 </b>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mb-2">Um 12 dB verstärkt:</h4>
+                <div>
+                    <audio controls>
+                        <source src="audio/u5/sine_1k_05_gain12.wav" type="audio/wav">
+                    </audio>
+                    <div class="mb-2 row align-items-center">
+                        <div class="col-6 p-1">
+                            <img src="pics/u5/u5_1c_3.png" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            Es tritt ein sichtbarer Oberton bei 3000Hz auf.
+                            <br>
+                            Maximale Amplitude = 89,2dB
+                            <br>
+                            <br>
+                            Grundton: 1000Hz 89,2dB
+                            <br>
+                            Oberton: 3000Hz 69,7dB
+                            <br>
+                            <br>
+                            Differenz: -19,5dB
+                            <br>
+                            <br>
+                            Umrechnung:
+                            <br>
+                            Grundton: 10^(0 / 20) = 1
+                            <br>
+                            Oberton: 10^(-19,5 / 20) = 0,1059
+                            <br>
+                            <br>
+                            Klirrfaktor:
+                            <br>
+                            k = sqrt(0,1059^2 / (1^2 + 0,1059^2))
+                            <br>
+                            <b>k = 0.1053</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ################################################ AUFGABE 2 ################################################-->
+    <!-- ########################## Ins Übungsprotokoll: Sourcecode, Histogramm des Bildes #########################-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 2: Echo</h3>
+
+        <!-- ############### 2 ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 2.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Implementiert ein Echo mit einer Verzögerung von 10, 100 und 200ms und dem
+                    Verstärkungsfaktor a = 0.6. Um wie viele Abtastwerte N müssen wir verzögern, wenn wir mit
+                    einer Abtastrate von 44.1 kHz arbeiten?
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="mb-2">
+                    <div style="background-color: #d1d3dc;" class="mb-1 p-1">
+                        <b>N = Δt * fa</b>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Δt = 10ms
+                            <br>
+                            fa = 44.1 KHz
+                            <br>
+                            <u>N = 0.01s * 44100 Hz = 441</u>
+                        </div>
+                        <div class="col-4">
+                            Δt = 100ms
+                            <br>
+                            fa = 44.1 KHz.
+                            <br>
+                            <u>N = 0.1s * 44100 Hz = 4410</u>
+                        </div>
+                        <div class="col-4">
+                            Δt = 200ms
+                            <br>
+                            fa = 44.1 KHz.
+                            <br>
+                            <u>N = 0.2s * 44100 Hz = 8820</u>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h3>Der Code:</h3>
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <img src="pics/u5/u5_2a_1.png" alt=" " style="width: 100%">
+                    </div>
+                    <div class="col-12">
+                        <img src="pics/u5/u5_2a_2.png" alt=" " style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </article>
+
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 2.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Wendet das Echo auf eure Sprach- und Musiksignal an. Es kann sein, dass die 10ms nur bei
+                    einem recht trockenen Soundfile wie der Sprachaufnahme hörbar werden.
+                    Hinweis: Bei Stereodateien muss berücksichtigt werden, dass linker und rechter Kanal getrennt
+                    verzögert werden müssen. Die Samples für links und rechts liegen im Samplearray jeweils
+                    hintereinander.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="row p-1 mb-1">
+                    <div class="col-4">
+                        <h6>Musik (stereo) Echo mit Verzögerung 10ms</h6>
+                        <audio controls>
+                            <source src="audio/u5/musik_stereo_echo_10.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h6>Musik (stereo) Echo mit Verzögerung 100ms</h6>
+                        <audio controls>
+                            <source src="audio/u5/musik_stereo_echo_100.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h6>Musik (stereo) Echo mit Verzögerung 200ms</h6>
+                        <audio controls>
+                            <source src="audio/u5/musik_stereo_echo_200.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="row p-1 mb-1">
+                    <div class="col-4">
+                        <h6>Sprache (mono) Echo mit Verzögerung 10ms</h6>
+                        <audio controls>
+                            <source src="audio/u5/sprache_mono_echo_10.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h6>Sprache (mono) Echo mit Verzögerung 100ms</h6>
+                        <audio controls>
+                            <source src="audio/u5/sprache_mono_echo_100.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h6>Sprache (mono) Echo mit Verzögerung 200ms</h6>
+                        <audio controls>
+                            <source src="audio/u5/sprache_mono_echo_200.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ################################################ AUFGABE 3 ################################################-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 3: Einfaches Filter</h3>
+
+        <!-- ############### 3.a ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 3.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Ein sehr einfaches Filter kann man z.B. mit der Zuordnungsvorschrift
+                    <br>
+                    y(k) = 0.5 * x(k) + 0.45 * x(k-1)
+                    <br>
+                    realisieren. Programmiert das Filter und vergleicht die Musikdatei vor und nach der Filterung.
+                    Tut dasselbe mit der Zuordnungsvorschrift
+                    <br>
+                    y(k) = 0.5 * x(k) - 0.45 * x(k-1)
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <h3>Der Code:</h3>
+                <div class="row">
+                    <div class="col-4 mb-2">
+                        <img src="pics/u5/u5_3a_1.png" alt=" " style="width: 100%">
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-6 pr-2">
+                        <img src="pics/u5/u5_3a_2.png" alt=" " style="width: 100%">
+                    </div>
+                    <div class="col-6 pl-2">
+                        <img src="pics/u5/u5_3a_3.png" alt=" " style="width: 100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-1 mb-1">
+                    <div class="col-4">
+                        <h4>Musik (stereo) Original</h4>
+                        <audio controls>
+                            <source src="audio/musik_stereo.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h4>Musik (stereo) High Pass</h4>
+                        <audio controls>
+                            <source src="audio/u5/musik_stereo_high_pass_filter.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h4>Musik (stereo) Low pass</h4>
+                        <audio controls>
+                            <source src="audio/u5/musik_stereo_low_pass_filter.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+                <div>
+                    Beim Low Pass merkt man keinen sonderlichen Unterschied zum Original.
+                    <br>
+                    Allerdings beim High Pass ist ein deutlicher Unterschied zu hören! Außerdem sind die Töne, die
+                    durchkommen, stärker Links (stereo) zu hören, was im original nicht so deutlich ist.
+                </div>
+            </div>
+        </article>
+
+        <!-- ############### 3.b ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 3.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Zum Testen der Filter verwendet Weißes Rauschen, das alle Frequenzen enthält. Wenn wir
+                    nun den Frequenzverlauf des Originalaudios mit dem gefilterten vergleichen, muss sich ein
+                    Verlauf wie in der unteren Darstellung ergeben. Um was für eine Art Filter handelt es sich
+                    jeweils?
+                    Ins Übungsprotokoll: Sourcecode, wavs Musik und Rauschen, Spektrum PRAAT
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <div class="row p-1 mb-1">
+                    <div class="col-4">
+                        <h4>Noise Original</h4>
+                        <audio controls>
+                            <source src="audio/u5/Noise_05.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h4>Noise High Pass</h4>
+                        <audio controls>
+                            <source src="audio/u5/Noise_05_high_pass_filter.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                    <div class="col-4">
+                        <h4>Noise Low pass</h4>
+                        <audio controls>
+                            <source src="audio/u5/Noise_05_low_pass_filter.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+
+                <hr>
+                <h3>Spektrum</h3>
+                <div class="row p-1 mb-1">
+                    <div class="col-4 p-1">
+                        <h4>Noise Original</h4>
+                        <div>
+                            <img src="pics/u5/u5_3b_original.png" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                    <div class="col-4 p-1">
+                        <h4>Noise High Pass</h4>
+                        <div>
+                            <img src="pics/u5/u5_3b_noise_high_pass.png" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                    <div class="col-4 row p-1">
+                        <h4>Noise Low pass</h4>
+                        <div>
+                            <img src="pics/u5/u5_3b_noise_low_pass.png" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</body>
+
+</html>
