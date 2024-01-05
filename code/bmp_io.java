@@ -14,12 +14,69 @@ public final class bmp_io {
 		for (String filestring : files) {
 
 			BmpImage bmp = null;
-			String file = "pics/u4/" + filestring + "_FOOBAR_YCbCr_Y.bmp";
+			String file = "pics/u6/" + filestring + "_FOOBAR_gray.bmp";
 			InputStream in = new FileInputStream(file);
 			bmp = BmpReader.read_bmp(in);
 			
-			printHistogramOfY(bmp, filestring);
+			bmp = lowPassFilter(bmp, 3);
+
+			createImages(bmp, filestring);
 		}
+	}
+	
+	private static void createImages(BmpImage bmp, String filestring) throws IOException {
+		String outFilename = null;
+
+		outFilename = "pics/u6/" + filestring + "_FOOBAR_lowpassfilter_3.bmp";
+		OutputStream out = new FileOutputStream(outFilename);
+
+		try {
+			BmpWriter.write_bmp(out, bmp);
+		} finally {
+			out.close();
+		}
+	}
+
+	private static BmpImage lowPassFilter(BmpImage bmp, int kernelSize) {
+		if (kernelSize % 2 == 0) throw new Error("Kernel size can't be even");
+		for (int y = 0; y < bmp.image.getHeight(); y++) {
+			for (int x = 0; x < bmp.image.getWidth(); x++) {
+				PixelColor[][] kernel = new PixelColor[kernelSize][kernelSize];
+				
+				for(int i = 0; i < kernelSize; i ++) {
+					for (int j = 0; j < kernelSize; j++) {
+						int targetX = -(kernelSize /  2) + i;
+						int targetY = -(kernelSize / 2) + i;
+						if (x+targetX < 0 || y+targetY < 0 || y+targetY >= bmp.image.getHeight() || x+targetX >= bmp.image.getWidth()) {
+							kernel[i][j] = null;
+							continue; 
+						}
+						kernel[i][j] = bmp.image.getRgbPixel(x+targetX, y+targetY);
+					}
+				}
+				PixelColor px = calculatePxFromKernel(kernel);
+				bmp.image.setRgbPixel(x, y, px);
+			}
+		}
+		return bmp;
+	}
+
+	private static PixelColor calculatePxFromKernel(PixelColor[][] kernel) {
+		PixelColor px = new PixelColor(0, 0, 0);
+		int notInImage = 0;
+		for (PixelColor[] row : kernel) {
+			for (PixelColor column : row) {
+				if (column == null) notInImage++;
+				px.r += column != null? column.r : 0;
+				px.g += column != null? column.g : 0;
+				px.b += column != null? column.b : 0;
+			}
+		}
+		px.r /= kernel.length * kernel.length - notInImage;
+		px.g /= kernel.length * kernel.length - notInImage;
+		px.b /= kernel.length * kernel.length - notInImage;
+		
+		return px;
 	}
 
 	private static void printHistogramOfY (BmpImage bmp, String filestring) throws FileNotFoundException {
@@ -35,21 +92,6 @@ public final class bmp_io {
 			writer.println(i + ":" + values[i]);
 		}
 		writer.close();
-	}
-
-	private static void createImages(BmpImage bmp, String filestring) throws IOException {
-		String outFilename = null;
-		bmp = toYCbCr(bmp);
-		bmp = toRGBImage(bmp, "Cb");
-
-		outFilename = "pics/u4/" + filestring + "_FOOBAR_YCbCr_Cb.bmp";
-		OutputStream out = new FileOutputStream(outFilename);
-
-		try {
-			BmpWriter.write_bmp(out, bmp);
-		} finally {
-			out.close();
-		}
 	}
 
 	private static BmpImage toYCbCr(BmpImage bmp) {
@@ -77,6 +119,18 @@ public final class bmp_io {
 				px.r = Math.max(Math.min(newR, 255), 0);
 				px.g = Math.max(Math.min(newG, 255), 0);
 				px.b = Math.max(Math.min(newB, 255), 0);
+			}
+		}
+		return bmp;
+	}
+	private static BmpImage toGrayChannel(BmpImage bmp) {
+		for (int y = 0; y < bmp.image.getHeight(); y++) {
+			for (int x = 0; x < bmp.image.getWidth(); x++) {
+				PixelColor px = bmp.image.getRgbPixel(x, y);
+				int Y = (int) (px.r * 0.3 + px.g * 0.6 + px.b * 0.1);
+				px.r = Y;
+				px.g = Y;
+				px.b = Y;
 			}
 		}
 		return bmp;
