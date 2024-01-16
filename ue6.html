@@ -45,7 +45,7 @@
                 </div>
             </div>
             <p>
-                Die Bilder werden durch den Tiefpassfilter zunehmend unscharf. Dies kann ggf. auch positiv sein, 
+                Die Bilder werden durch den Tiefpassfilter zunehmend unscharf. Dies kann ggf. auch positiv sein,
                 da es dadurch ebenfalls Unebenheiten im Bild rausfiltert.
             </p>
         </div>
@@ -67,10 +67,10 @@
             <h4 class="mb-2">Lösung:</h4>
             <p>
                 Bei Pixeln am Rand vom Bild besteht das Problem, dass der Tiefpassfilter ggf. auf Pixel außerhalb
-                des Bildes zugreifen will. Das wird in unserem Code verhindert, in dem diese Pixel auf "null" 
-                gesetzt werden, bevor das Programm einen Fehlercode zurückgeben kann. Die Formel für die 
-                Mittelwertsberechnung ist so geschrieben, dass sie wirklich nur Werte aus Pixeln mit "echten" Werten 
-                zählt, sollten z.B. 3 Pixel wegfallen wird der Mittelwert am Ende durch 6 geteilt, statt durch 9. Das 
+                des Bildes zugreifen will. Das wird in unserem Code verhindert, in dem diese Pixel auf "null"
+                gesetzt werden, bevor das Programm einen Fehlercode zurückgeben kann. Die Formel für die
+                Mittelwertsberechnung ist so geschrieben, dass sie wirklich nur Werte aus Pixeln mit "echten" Werten
+                zählt, sollten z.B. 3 Pixel wegfallen wird der Mittelwert am Ende durch 6 geteilt, statt durch 9. Das
                 gewährleistet eine getreue Darstellung des resultierenden Bildes.
             </p>
         </div>
@@ -146,7 +146,7 @@
 <!-- ################################################ AUFGABE 3 ################################################-->
 
 <section class="group">
-    <h3 class="mb-2">Aufgabe 3: : Medianfilter</h3>
+    <h3 class="mb-2">Aufgabe 3: Medianfilter</h3>
 
     <!-- ############### 3 ############### -->
     <article class="card mb-2">
@@ -167,7 +167,33 @@
             <hr class="mb-2">
 
             <h4 class="mb-2">Lösung:</h4>
-            <!-- TODO -->
+            <h3>Der Code:</h3>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <img src="pics/u6/a3_code_1.png" alt=" " style="max-width: 100%;">
+                </div>
+                <div class="col-12 mb-2">
+                    <img src="pics/u6/a3_code_2.png" alt=" " style="max-width: 100%;">
+                </div>
+                <h3>Hilfsmethoden</h3>
+                <div class="col-12">
+                    <img src="pics/u6/a3_code_3.png" alt=" " style="max-width: 100%;">
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <h3 class="mb-2">Ergebnis:</h3>
+            <div class="row">
+                <div class="col-6 pr-2">
+                    <h4>Editiertes Bild (10 Punkte unten Links . . . _ . . .)</h4>
+                    <img src="pics/u6/Nature_FOOBAR_gray_edited.bmp" alt=" " style="width: 100%">
+                </div>
+                <div class="col-6 pl-2">
+                    <h4>Bild nach Anwendung des Medianfilters</h4>
+                    <img src="pics/u6/Nature_FOOBAR_gray_median.bmp" alt=" " style="width: 100%">
+                </div>
+            </div>
         </div>
     </article>
 </section>
@@ -175,9 +201,9 @@
 <!-- ################################################ AUFGABE 4 ################################################-->
 
 <section class="group">
-    <h3 class="mb-2">Aufgabe 4: : Sobel-Filter </h3>
+    <h3 class="mb-2">Aufgabe 4: Sobel-Filter </h3>
 
-    <!-- ############### 3.a ############### -->
+    <!-- ############### 4 ############### -->
     <article class="card mb-2">
         <div class="card-header">
             <h3>Aufgabe 4</h3>
@@ -196,14 +222,14 @@
             <h3>Der Code:</h3>
             <div class="row">
                 <div class="col-12 mb-2">
-                    <img src="pics/u6/u6_code_1.png" alt=" " style="max-width: 100%">
+                    <img src="pics/u6/a4_code_1.png" alt=" " style="max-width: 100%">
                 </div>
                 <div class="col-12 mb-2">
-                    <img src="pics/u6/u6_code_2.png" alt=" " style="max-width: 100%">
+                    <img src="pics/u6/a4_code_2.png" alt=" " style="max-width: 100%">
                 </div>
-                <div class="col-12">
-                    <img src="pics/u6/u6_code_3.png" alt=" " style="max-width: 100%">
-                </div>
+                <h4 class="col-12">
+                    <b><i>"Hilfsmethoden aus Aufgabe 3"</i></b>
+                </h4>
             </div>
 
             <br>
@@ -211,18 +237,18 @@
             <h3 class="mb-2">Ergebnis:</h3>
             <div class="row">
                 <h4 class="col-12">Sobel horizontal</h4>
-                <div class="col-6 mb-2">
+                <div class="col-6 mb-2 pr-2">
                     <img src="pics/u6/Manmade_FOOBAR_gray_sobel_horizontal.bmp" alt=" " style="width: 100%">
                 </div>
-                <div class="col-6 mb-2">
+                <div class="col-6 mb-2 pl-2">
                     <img src="pics/u6/Nature_FOOBAR_gray_sobel_horizontal.bmp" alt=" " style="width: 100%">
                 </div>
 
                 <h4 class="col-12">Sobel vertikal</h4>
-                <div class="col-6 mb-2">
+                <div class="col-6 pr-2">
                     <img src="pics/u6/Manmade_FOOBAR_gray_sobel_vertical.bmp" alt=" " style="width: 100%">
                 </div>
-                <div class="col-6 mb-2">
+                <div class="col-6 pl-2">
                     <img src="pics/u6/Nature_FOOBAR_gray_sobel_vertical.bmp" alt=" " style="width: 100%">
                 </div>
             </div>
