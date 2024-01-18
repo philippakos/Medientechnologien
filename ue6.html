@@ -9,252 +9,294 @@
 
 <body style="padding: 30px;">
 
-<h2 class="mb-2">Übung 6: Bildfilter </h2>
+    <h2 class="mb-2">Übung 6: Bildfilter </h2>
 
-<!-- ################################################ AUFGABE 1 ################################################-->
-<!-- ##  Ins Übungsprotokoll: Sourcecode, wavs Musik und Sinus, Ausschnitte vom Clipping (z.B. aus Audacity   ##-->
-<!-- ##            oder Praat), Frequenzspektrum des Sinus (PRAAT), Berechnungen Klirrfaktor k.               ##-->
+    <!-- ################################################ AUFGABE 1 ################################################-->
+    <!-- ##  Ins Übungsprotokoll: Sourcecode, wavs Musik und Sinus, Ausschnitte vom Clipping (z.B. aus Audacity   ##-->
+    <!-- ##            oder Praat), Frequenzspektrum des Sinus (PRAAT), Berechnungen Klirrfaktor k.               ##-->
 
-<section class="group">
-    <h3 class="mb-2">Aufgabe 1: Mittelwertfilter (Tiefpass) </h3>
-    <!-- ############### 1.a ############### -->
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 1.a</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Erweitere bmp_io so, dass ein Filter mit einem Kernel von 3x3 Pixeln angewandt werden kann.
-                Beim Mittelwertfilter wird ein Zielpixel aus dem Mittelwert aller Pixel im Kernel im Originalbild
-                berechnet. Beschreibe die Wirkung des Filters auf deine Bilder!
-            </p>
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 1: Mittelwertfilter (Tiefpass) </h3>
+        <!-- ############### 1.a ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Erweitere bmp_io so, dass ein Filter mit einem Kernel von 3x3 Pixeln angewandt werden kann.
+                    Beim Mittelwertfilter wird ein Zielpixel aus dem Mittelwert aller Pixel im Kernel im Originalbild
+                    berechnet. Beschreibe die Wirkung des Filters auf deine Bilder!
+                </p>
 
-            <hr class="mb-2">
+                <hr class="mb-2">
 
-            <h4 class="mb-2">Lösung:</h4>
-            <img src="pics/u6/code_1a.PNG" alt=" " style="width: 100%">
-            <div class="mb-2">
+                <h4 class="mb-2">Lösung:</h4>
+                <img src="pics/u6/code_1a.PNG" alt=" " style="width: 100%">
+                <div class="mb-2">
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Manmade_FOOBAR_lowpassfilter_3.bmp" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Nature_FOOBAR_lowpassfilter_3.bmp" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    Die Bilder werden durch den Tiefpassfilter zunehmend unscharf. Dies kann ggf. auch positiv sein,
+                    da es dadurch ebenfalls Unebenheiten im Bild rausfiltert.
+                </p>
+            </div>
+        </article>
+
+        <!-- ############### 1.b ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Wie verfährt man bei der Berechnung des Filters mit den Randpixeln?
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <p>
+                    Bei Pixeln am Rand vom Bild besteht das Problem, dass der Tiefpassfilter ggf. auf Pixel außerhalb
+                    des Bildes zugreifen will. Das wird in unserem Code verhindert, in dem diese Pixel auf "null"
+                    gesetzt werden, bevor das Programm einen Fehlercode zurückgeben kann. Die Formel für die
+                    Mittelwertsberechnung ist so geschrieben, dass sie wirklich nur Werte aus Pixeln mit "echten" Werten
+                    zählt, sollten z.B. 3 Pixel wegfallen wird der Mittelwert am Ende durch 6 geteilt, statt durch 9.
+                    Das
+                    gewährleistet eine getreue Darstellung des resultierenden Bildes.
+                </p>
+            </div>
+        </article>
+
+        <!-- ############### 1.c ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 1.c</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Erweitere bmp_io so, dass das Differenzbild zwischen dem gefilterten und dem Originalbild
+                    berechnet werden kann (analog zu Übung 2, Aufgabenpunkt 3.3)! Dieses muss offensichtlich die
+                    Information zeigen, die das Filter entfernt hat. Beachte dabei, dass du das Differenzbild
+                    möglicherweise im Kontrast verstärken musst (siehe Übung 4).
+
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <img src="pics/u6/code_1c.PNG" alt=" " style="width: 100%">
+                <div class="mb-2">
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Manmade_FOOBAR_lowpassfilter_difference.bmp" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Nature_FOOBAR_lowpassfilter_difference.bmp" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ################################################ AUFGABE 2 ################################################-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 2: Gradientenfilter</h3>
+
+        <!-- ############### 2 ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 2.a</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Wende nun den folgenden 3*3 Kernel auf deine Bilder an! Beachte dabei, dass bei der direkten
+                    Anwendung der Vorschrift Werte > 255 entstehen können. Durch welchen Wert muss also die
+                    Intensität des Zielpixels geteilt werden, damit man wieder in den erlaubten Bereich 0…255 kommt?
+                    Beschreibe die Wirkung des Filters auf deine Bilder!
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <img src="pics/u6/code_2a.PNG" alt=" " style="width: 100%">
+                <div class="mb-2">
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Manmade_FOOBAR_gradientfilter.bmp" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Nature_FOOBAR_gradientfilter.bmp" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    Die Intensität des Zielpixels muss durch 4 geteilt werden, da -2 + -2 + 12 + -2 + -2 = 4. Die Bilder
+                    werden durch den
+                    Gradientenfilter zunehmend schärfer und kontrastreicher.
+                </p>
+            </div>
+        </article>
+
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 2.b</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Berechne wiederum das Differenzbild zwischen dem gefilterten und dem Originalbild! Beachte
+                    dabei ebenfalls, dass du das Differenzbild möglicherweise im Kontrast verstärken musst.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <p>
+                    Hier wurde calculateDifference aus 1.c wiederverwendet
+                </p>
+                <div class="mb-2">
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Manmade_FOOBAR_gradientfilter_difference.bmp" alt=" " style="width: 100%">
+                        </div>
+                        <div class="col-6 p-1">
+                            <img src="pics/u6/Nature_FOOBAR_gradientfilter_difference.bmp" alt=" " style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ################################################ AUFGABE 3 ################################################-->
+
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 3: Medianfilter</h3>
+
+        <!-- ############### 3 ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 3</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Das Medianfilter reiht alle Pixelintensitäten im Filterkernel der Größe nach auf und gibt den
+                    Intensitätswert aus, der an der mittleren Position steht. Es wird oft zur Beseitigung von Kratzern
+                    oder
+                    punktförmigen Bildfehlern verwendet. Füge zunächst mit Paint deinem Flächenbild zehn „Fehler“
+                    hinzu, wie es in dem folgenden Beispiel zu sehen ist. Benutze dazu einen weißen Stift mit der
+                    Strichstärke 1 Pixel. Programmiere das Medianfilter für deine 3x3-Pixelmatrix und berechne das
+                    Ergebnisbild.
+                </p>
+
+                <hr class="mb-2">
+
+                <h4 class="mb-2">Lösung:</h4>
+                <h3>Der Code:</h3>
                 <div class="row">
-                    <div class="col-6 p-1">
-                        <img src="pics/u6/Manmade_FOOBAR_lowpassfilter_3.bmp" alt=" " style="width: 100%">
+                    <div class="col-12 mb-2">
+                        <img src="pics/u6/a3_code_1.png" alt=" " style="max-width: 100%;">
                     </div>
-                    <div class="col-6 p-1">
-                        <img src="pics/u6/Nature_FOOBAR_lowpassfilter_3.bmp" alt=" " style="width: 100%">
+                    <div class="col-12 mb-2">
+                        <img src="pics/u6/a3_code_2.png" alt=" " style="max-width: 100%;">
+                    </div>
+                    <h3>Hilfsmethoden</h3>
+                    <div class="col-12">
+                        <img src="pics/u6/a3_code_3.png" alt=" " style="max-width: 100%;">
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <h3 class="mb-2">Ergebnis:</h3>
+                <div class="row">
+                    <div class="col-6 pr-2">
+                        <h4>Editiertes Bild (10 Punkte unten Links . . . _ . . .)</h4>
+                        <img src="pics/u6/Nature_FOOBAR_gray_edited.bmp" alt=" " style="width: 100%">
+                    </div>
+                    <div class="col-6 pl-2">
+                        <h4>Bild nach Anwendung des Medianfilters</h4>
+                        <img src="pics/u6/Nature_FOOBAR_gray_median.bmp" alt=" " style="width: 100%">
                     </div>
                 </div>
             </div>
-            <p>
-                Die Bilder werden durch den Tiefpassfilter zunehmend unscharf. Dies kann ggf. auch positiv sein,
-                da es dadurch ebenfalls Unebenheiten im Bild rausfiltert.
-            </p>
-        </div>
-    </article>
+        </article>
+    </section>
 
-    <!-- ############### 1.b ############### -->
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 1.b</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Wie verfährt man bei der Berechnung des Filters mit den Randpixeln?
-            </p>
+    <!-- ################################################ AUFGABE 4 ################################################-->
 
-            <hr class="mb-2">
+    <section class="group">
+        <h3 class="mb-2">Aufgabe 4: Sobel-Filter </h3>
 
-            <h4 class="mb-2">Lösung:</h4>
-            <p>
-                Bei Pixeln am Rand vom Bild besteht das Problem, dass der Tiefpassfilter ggf. auf Pixel außerhalb
-                des Bildes zugreifen will. Das wird in unserem Code verhindert, in dem diese Pixel auf "null"
-                gesetzt werden, bevor das Programm einen Fehlercode zurückgeben kann. Die Formel für die
-                Mittelwertsberechnung ist so geschrieben, dass sie wirklich nur Werte aus Pixeln mit "echten" Werten
-                zählt, sollten z.B. 3 Pixel wegfallen wird der Mittelwert am Ende durch 6 geteilt, statt durch 9. Das
-                gewährleistet eine getreue Darstellung des resultierenden Bildes.
-            </p>
-        </div>
-    </article>
+        <!-- ############### 4 ############### -->
+        <article class="card mb-2">
+            <div class="card-header">
+                <h3>Aufgabe 4</h3>
+            </div>
+            <div class="card-body">
+                <h4 class="mb-2">Aufgabestellung:</h4>
+                <p>
+                    Das Sobel-Filter dient der Detektion von Kanten im Bild. Programmiere ein Sobel-Filter für die x-
+                    und
+                    ein Sobel-Filter für die y-Richtung und wende sie auf deine Bilder an! Die Matrizen für das
+                    SobelFilter
+                    finden sich im pdf zur Bildfilterung.
+                </p>
 
-    <!-- ############### 1.c ############### -->
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 1.c</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Erweitere bmp_io so, dass das Differenzbild zwischen dem gefilterten und dem Originalbild
-                berechnet werden kann (analog zu Übung 2, Aufgabenpunkt 3.3)! Dieses muss offensichtlich die
-                Information zeigen, die das Filter entfernt hat. Beachte dabei, dass du das Differenzbild
-                möglicherweise im Kontrast verstärken musst (siehe Übung 4).
+                <hr class="mb-2">
 
-            </p>
-
-            <hr class="mb-2">
-
-            <h4 class="mb-2">Lösung:</h4>
-        </div>
-    </article>
-</section>
-
-<!-- ################################################ AUFGABE 2 ################################################-->
-
-<section class="group">
-    <h3 class="mb-2">Aufgabe 2: Gradientenfilter</h3>
-
-    <!-- ############### 2 ############### -->
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 2.a</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Wende nun den folgenden 3*3 Kernel auf deine Bilder an! Beachte dabei, dass bei der direkten
-                Anwendung der Vorschrift Werte > 255 entstehen können. Durch welchen Wert muss also die
-                Intensität des Zielpixels geteilt werden, damit man wieder in den erlaubten Bereich 0…255 kommt?
-                Beschreibe die Wirkung des Filters auf deine Bilder!
-            </p>
-
-            <hr class="mb-2">
-
-            <h4 class="mb-2">Lösung:</h4>
-            <!-- TODO -->
-        </div>
-    </article>
-
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 2.b</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Berechne wiederum das Differenzbild zwischen dem gefilterten und dem Originalbild! Beachte
-                dabei ebenfalls, dass du das Differenzbild möglicherweise im Kontrast verstärken musst.
-            </p>
-
-            <hr class="mb-2">
-
-            <h4 class="mb-2">Lösung:</h4>
-            <!-- TODO -->
-        </div>
-    </article>
-</section>
-
-<!-- ################################################ AUFGABE 3 ################################################-->
-
-<section class="group">
-    <h3 class="mb-2">Aufgabe 3: Medianfilter</h3>
-
-    <!-- ############### 3 ############### -->
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 3</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Das Medianfilter reiht alle Pixelintensitäten im Filterkernel der Größe nach auf und gibt den
-                Intensitätswert aus, der an der mittleren Position steht. Es wird oft zur Beseitigung von Kratzern oder
-                punktförmigen Bildfehlern verwendet. Füge zunächst mit Paint deinem Flächenbild zehn „Fehler“
-                hinzu, wie es in dem folgenden Beispiel zu sehen ist. Benutze dazu einen weißen Stift mit der
-                Strichstärke 1 Pixel. Programmiere das Medianfilter für deine 3x3-Pixelmatrix und berechne das
-                Ergebnisbild.
-            </p>
-
-            <hr class="mb-2">
-
-            <h4 class="mb-2">Lösung:</h4>
-            <h3>Der Code:</h3>
-            <div class="row">
-                <div class="col-12 mb-2">
-                    <img src="pics/u6/a3_code_1.png" alt=" " style="max-width: 100%;">
+                <h4 class="mb-2">Lösung:</h4>
+                <h3>Der Code:</h3>
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <img src="pics/u6/a4_code_1.png" alt=" " style="max-width: 100%">
+                    </div>
+                    <div class="col-12 mb-2">
+                        <img src="pics/u6/a4_code_2.png" alt=" " style="max-width: 100%">
+                    </div>
+                    <h4 class="col-12">
+                        <b><i>"Hilfsmethoden aus Aufgabe 3"</i></b>
+                    </h4>
                 </div>
-                <div class="col-12 mb-2">
-                    <img src="pics/u6/a3_code_2.png" alt=" " style="max-width: 100%;">
-                </div>
-                <h3>Hilfsmethoden</h3>
-                <div class="col-12">
-                    <img src="pics/u6/a3_code_3.png" alt=" " style="max-width: 100%;">
+
+                <br>
+                <br>
+                <h3 class="mb-2">Ergebnis:</h3>
+                <div class="row">
+                    <h4 class="col-12">Sobel horizontal</h4>
+                    <div class="col-6 mb-2 pr-2">
+                        <img src="pics/u6/Manmade_FOOBAR_gray_sobel_horizontal.bmp" alt=" " style="width: 100%">
+                    </div>
+                    <div class="col-6 mb-2 pl-2">
+                        <img src="pics/u6/Nature_FOOBAR_gray_sobel_horizontal.bmp" alt=" " style="width: 100%">
+                    </div>
+
+                    <h4 class="col-12">Sobel vertikal</h4>
+                    <div class="col-6 pr-2">
+                        <img src="pics/u6/Manmade_FOOBAR_gray_sobel_vertical.bmp" alt=" " style="width: 100%">
+                    </div>
+                    <div class="col-6 pl-2">
+                        <img src="pics/u6/Nature_FOOBAR_gray_sobel_vertical.bmp" alt=" " style="width: 100%">
+                    </div>
                 </div>
             </div>
-
-            <br>
-            <br>
-            <h3 class="mb-2">Ergebnis:</h3>
-            <div class="row">
-                <div class="col-6 pr-2">
-                    <h4>Editiertes Bild (10 Punkte unten Links . . . _ . . .)</h4>
-                    <img src="pics/u6/Nature_FOOBAR_gray_edited.bmp" alt=" " style="width: 100%">
-                </div>
-                <div class="col-6 pl-2">
-                    <h4>Bild nach Anwendung des Medianfilters</h4>
-                    <img src="pics/u6/Nature_FOOBAR_gray_median.bmp" alt=" " style="width: 100%">
-                </div>
-            </div>
-        </div>
-    </article>
-</section>
-
-<!-- ################################################ AUFGABE 4 ################################################-->
-
-<section class="group">
-    <h3 class="mb-2">Aufgabe 4: Sobel-Filter </h3>
-
-    <!-- ############### 4 ############### -->
-    <article class="card mb-2">
-        <div class="card-header">
-            <h3>Aufgabe 4</h3>
-        </div>
-        <div class="card-body">
-            <h4 class="mb-2">Aufgabestellung:</h4>
-            <p>
-                Das Sobel-Filter dient der Detektion von Kanten im Bild. Programmiere ein Sobel-Filter für die x- und
-                ein Sobel-Filter für die y-Richtung und wende sie auf deine Bilder an! Die Matrizen für das SobelFilter
-                finden sich im pdf zur Bildfilterung.
-            </p>
-
-            <hr class="mb-2">
-
-            <h4 class="mb-2">Lösung:</h4>
-            <h3>Der Code:</h3>
-            <div class="row">
-                <div class="col-12 mb-2">
-                    <img src="pics/u6/a4_code_1.png" alt=" " style="max-width: 100%">
-                </div>
-                <div class="col-12 mb-2">
-                    <img src="pics/u6/a4_code_2.png" alt=" " style="max-width: 100%">
-                </div>
-                <h4 class="col-12">
-                    <b><i>"Hilfsmethoden aus Aufgabe 3"</i></b>
-                </h4>
-            </div>
-
-            <br>
-            <br>
-            <h3 class="mb-2">Ergebnis:</h3>
-            <div class="row">
-                <h4 class="col-12">Sobel horizontal</h4>
-                <div class="col-6 mb-2 pr-2">
-                    <img src="pics/u6/Manmade_FOOBAR_gray_sobel_horizontal.bmp" alt=" " style="width: 100%">
-                </div>
-                <div class="col-6 mb-2 pl-2">
-                    <img src="pics/u6/Nature_FOOBAR_gray_sobel_horizontal.bmp" alt=" " style="width: 100%">
-                </div>
-
-                <h4 class="col-12">Sobel vertikal</h4>
-                <div class="col-6 pr-2">
-                    <img src="pics/u6/Manmade_FOOBAR_gray_sobel_vertical.bmp" alt=" " style="width: 100%">
-                </div>
-                <div class="col-6 pl-2">
-                    <img src="pics/u6/Nature_FOOBAR_gray_sobel_vertical.bmp" alt=" " style="width: 100%">
-                </div>
-            </div>
-        </div>
-    </article>
-</section>
+        </article>
+    </section>
 </body>
 
 </html>
